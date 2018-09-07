@@ -1,5 +1,4 @@
 import cv2
-import time
 
 class Camera:
     def __init__(self, ip=None):

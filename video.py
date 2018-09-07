@@ -2,18 +2,18 @@
 from flask import (
     Flask, render_template, Response, Blueprint, flash, g, redirect, request, url_for, session
 )
-from opencv_camera import Camera
+from .camera import Camera
+from .auth import login_required
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = '123456'
+bp = Blueprint('video', __name__)
 
-@app.route('/', methods=('GET', 'POST'))
-def index():
+@bp.route('/', methods=('GET', 'POST'))
+@login_required
+def video_html():
     session.setdefault('ip', None)
-    session
     if request.method == 'POST':
         session['ip']=request.form['ip']
-    return render_template('index.html')
+    return render_template('video.html')
 
 import time
 def gen(camera):
@@ -23,12 +23,9 @@ def gen(camera):
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
-@app.route('/video_feed')
+@bp.route('/video_feed')
 def video_feed():
     camera = Camera(session['ip'])
     if camera.has_opened():
         return Response(gen(camera),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', threaded=True)
