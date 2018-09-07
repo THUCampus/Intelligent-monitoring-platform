@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}管理员界面{% endblock %}</h1>
+    <h1>{% block title %}管理员界面{% endblock %}</h1>
+    <a class="action" href="{{url_for('auth.register')}}">注册新用户</a>
 {% endblock %}
 
 {% block content %}
@@ -16,7 +17,9 @@
                         {% endif %}
                     </div>
                 </div>
-                <a class="action" href="{{url_for('auth.delete', id=user['id'])}}">删除</a>
+                <form action="{{ url_for('auth.delete', id=user['id']) }}" method="post">
+                    <input class="danger" type="submit" value="删除" onclick="return confirm('Are you sure?');">
+                </form>
             </header>
         </article>
     {% endfor %}

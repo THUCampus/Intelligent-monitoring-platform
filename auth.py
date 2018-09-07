@@ -32,7 +32,7 @@ def register():
                 (username, generate_password_hash(password), is_manager)
             )
             db.commit()
-            return redirect(url_for('auth.register'))
+            return redirect(url_for('auth.manage'))
 
         flash(error)
     return render_template('auth/register.html')
@@ -75,7 +75,7 @@ def load_logged_in_user():
 @bp.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('video.video_html'))
+    return redirect(url_for('auth.login'))
 
 def login_required(view):
     @functools.wraps(view)
@@ -90,12 +90,13 @@ def login_required(view):
 def manage():
     '''返回管理员界面'''
     db = get_db()
+    user_id = session.get('user_id')
     users = db.execute(
-        'SELECT u.id, u.username, u.is_manager FROM user u'
+        'SELECT u.id, u.username, u.is_manager FROM user u WHERE u.id != ?',(user_id,)
     )
     return render_template('auth/manage.html',users=users) #待填
 
-@bp.route('/<int:id>/delete', methods=('POST',))
+@bp.route('/<int:id>/delete', methods=('POST','GET'))
 @login_required
 def delete(id):
     db = get_db()
