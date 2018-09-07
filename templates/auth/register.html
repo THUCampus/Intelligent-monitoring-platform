@@ -2,6 +2,9 @@
 
 {% block header %}
   <h1>{% block title %}注册界面{% endblock %}</h1>
+  <a class="action" href="{{url_for('auth.manage')}}">管理页面</a>
+  <a class="action" href="{{url_for('auth.update_password')}}">修改密码</a>
+  <a class="action" href="{{url_for('video.video_html')}}">监控页面</a>
 {% endblock %}
 
 {% block content %}
@@ -13,6 +16,6 @@
     <label>是否为管理员</label>
     <label><input type="radio" name="is_manager" value="True"/>是</label>
     <label><input type="radio" name="is_manager" value="False" checked/>否</label>
-    <input type="submit" value="Register">
+    <input type="submit" value="注册新用户">
   </form>
 {% endblock %}

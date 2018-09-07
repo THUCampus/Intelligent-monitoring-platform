@@ -1,6 +1,7 @@
 import cv2
 
 class Camera:
+    '''IP 摄像头类'''
     def __init__(self, ip=None):
         self.camera = None
         if ip:
@@ -14,9 +15,11 @@ class Camera:
             raise RuntimeError('Could not start camera')
 
     def get_frame(self):
+        '''获取当前时刻的帧'''
         _, img = self.camera.read()
         frame = cv2.imencode('.jpg', img)[1].tobytes()
         return frame
 
     def has_opened(self):
+        '''判断摄像头是否正常工作'''
         return self.camera is not None and self.camera.isOpened()

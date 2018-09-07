@@ -1,30 +1,12 @@
-<!--<html>-->
- <!--<head>-->
-  <!--<title>智能监控系统</title>-->
- <!--</head>-->
- <!--<body>-->
-  <!--<h1>Video Streaming Demonstration</h1>-->
-  <!--<form method="post">-->
-     <!--<label for="ip">IP</label>-->
-     <!--<input name="ip" id="ip" required>-->
-     <!--<input type="submit" value="提交">-->
-  <!--</form>-->
-
-  <!--<img src="{{ url_for('video.video_feed') }}">-->
-
-  <!--{% if g.user and g.user['is_manager'] %}-->
-    <!--<a class="action" href="{{url_for('auth.manage')}}">管理员界面</a>-->
-  <!--{% endif%}-->
- <!--</body>-->
-<!--</html>-->
-
 {% extends 'base.html' %}
 
 {% block header %}
   <h1>{% block title %}监控界面{% endblock %}</h1>
   {% if g.user and g.user['is_manager'] %}
     <a class="action" href="{{url_for('auth.manage')}}">管理员界面</a>
+    <a class="action" href="{{url_for('auth.register')}}">注册新用户</a>
   {% endif%}
+    <a class="action" href="{{url_for('auth.update_password')}}">修改密码</a>
 {% endblock %}
 
 {% block content %}

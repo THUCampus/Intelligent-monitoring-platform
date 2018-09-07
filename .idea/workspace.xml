@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d1e92aa-980d-4ac5-b981-8d3fbd59af5b" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/templates/auth/update_password.html" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change beforePath="$PROJECT_DIR$/__init__.py" afterPath="$PROJECT_DIR$/__init__.py" />
       <change beforePath="$PROJECT_DIR$/auth.py" afterPath="$PROJECT_DIR$/auth.py" />
+      <change beforePath="$PROJECT_DIR$/camera.py" afterPath="$PROJECT_DIR$/camera.py" />
+      <change beforePath="$PROJECT_DIR$/db.py" afterPath="$PROJECT_DIR$/db.py" />
       <change beforePath="$PROJECT_DIR$/templates/auth/manage.html" afterPath="$PROJECT_DIR$/templates/auth/manage.html" />
+      <change beforePath="$PROJECT_DIR$/templates/auth/register.html" afterPath="$PROJECT_DIR$/templates/auth/register.html" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
+      <change beforePath="$PROJECT_DIR$/templates/video.html" afterPath="$PROJECT_DIR$/templates/video.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,20 +23,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="auth.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="auth.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/auth.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="35">
-              <caret line="94" column="85" lean-forward="false" selection-start-line="94" selection-start-column="85" selection-end-line="94" selection-end-column="85" />
+            <state relative-caret-position="1340">
+              <caret line="67" column="30" lean-forward="true" selection-start-line="67" selection-start-column="30" selection-end-line="67" selection-end-column="30" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
-                <marker date="1536321339867" expanded="true" signature="754:792" ph="SELECT id FR... user" />
-                <marker date="1536321339867" expanded="true" signature="979:1043" ph="INSERT INTO user... " />
-                <marker date="1536321339867" expanded="true" signature="1542:1579" ph="SELECT * FRO... user" />
-                <marker date="1536321339867" expanded="true" signature="2208:2239" ph="SELECT * FRO... user" />
-                <marker date="1536321339867" expanded="true" signature="2749:2814" ph="SELECT u.id,... user" />
-                <marker date="1536321339867" expanded="true" signature="3017:3046" ph="DELETE FROM user... " />
+                <marker date="1536328791208" expanded="true" signature="546:583" ph="SELECT * FRO... user" />
+                <marker date="1536328791208" expanded="true" signature="1210:1241" ph="SELECT * FRO... user" />
+                <marker date="1536328791208" expanded="true" signature="2753:2791" ph="SELECT id FR... user" />
+                <marker date="1536328791208" expanded="true" signature="2978:3042" ph="INSERT INTO user... " />
+                <marker date="1536328791208" expanded="true" signature="3439:3504" ph="SELECT u.id,... user" />
+                <marker date="1536328791208" expanded="true" signature="3722:3751" ph="DELETE FROM user... " />
+                <marker date="1536328791208" expanded="true" signature="4275:4323" ph="SELECT id, p... user" />
+                <marker date="1536328791208" expanded="true" signature="4617:4645" ph="UPDATE user... " />
+                <marker date="1536328791208" expanded="true" signature="4617:4658" ph="UPDATE user... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/auth/login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="3" column="27" lean-forward="false" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -36,18 +57,40 @@
       <file leaf-file-name="video.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/video.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="25" column="61" lean-forward="false" selection-start-line="25" selection-start-column="61" selection-end-line="25" selection-end-column="61" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manage.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/auth/manage.html">
+      <file leaf-file-name="video.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/video.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="21" column="23" lean-forward="true" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+            <state relative-caret-position="300">
+              <caret line="15" column="33" lean-forward="false" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="33" />
+              <folding>
+                <element signature="e#22#138#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/auth/register.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="5" column="65" lean-forward="false" selection-start-line="5" selection-start-column="65" selection-end-line="5" selection-end-column="65" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="update_password.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/auth/update_password.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="3" column="25" lean-forward="false" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -56,8 +99,8 @@
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="6" column="17" lean-forward="true" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+            <state relative-caret-position="444">
+              <caret line="33" column="35" lean-forward="false" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -65,27 +108,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="video.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/video.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-73">
-              <caret line="10" column="15" lean-forward="false" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
-              <folding>
-                <element signature="e#22#138#0" expanded="true" />
-              </folding>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="259">
+                <caret line="24" column="37" lean-forward="false" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
+                <folding />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="20">
-                <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-                <folding />
-              </first_editor>
-              <second_editor />
+      <file leaf-file-name="camera.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/camera.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="780">
+              <caret line="44" column="55" lean-forward="false" selection-start-line="44" selection-start-column="55" selection-end-line="44" selection-end-column="55" />
+              <folding>
+                <marker date="1536326278556" expanded="true" signature="889:955" ph="INSERT INTO user... " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -108,23 +161,25 @@
       <list>
         <option value="$PROJECT_DIR$/camera.html" />
         <option value="$PROJECT_DIR$/template/index.html" />
-        <option value="$PROJECT_DIR$/camera.py" />
         <option value="$PROJECT_DIR$/base_camera.py" />
-        <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/templates/login.html" />
         <option value="$PROJECT_DIR$/templates/register.html" />
         <option value="$PROJECT_DIR$/schema.sql" />
-        <option value="$PROJECT_DIR$/db.py" />
         <option value="$PROJECT_DIR$/web_video.py" />
         <option value="$PROJECT_DIR$/templates/index.html" />
-        <option value="$PROJECT_DIR$/__init__.py" />
         <option value="$PROJECT_DIR$/opencv_camera.py" />
-        <option value="$PROJECT_DIR$/video.py" />
-        <option value="$PROJECT_DIR$/templates/auth/register.html" />
         <option value="$PROJECT_DIR$/templates/auth/login.html" />
-        <option value="$PROJECT_DIR$/templates/video.html" />
+        <option value="$PROJECT_DIR$/templates/base.html" />
+        <option value="$PROJECT_DIR$/templates/auth/update_password.html" />
+        <option value="$PROJECT_DIR$/templates/auth/register.html" />
         <option value="$PROJECT_DIR$/templates/auth/manage.html" />
+        <option value="$PROJECT_DIR$/templates/video.html" />
+        <option value="$PROJECT_DIR$/__init__.py" />
+        <option value="$PROJECT_DIR$/camera.py" />
+        <option value="$PROJECT_DIR$/db.py" />
+        <option value="$PROJECT_DIR$/video.py" />
         <option value="$PROJECT_DIR$/auth.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -135,9 +190,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="351" />
+    <option name="y" value="376" />
     <option name="width" value="1440" />
-    <option name="height" value="497" />
+    <option name="height" value="472" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -162,6 +217,11 @@
             <path>
               <item name="Intelligent-monitoring-platform" type="b2602c69:ProjectViewProjectNode" />
               <item name="Intelligent-monitoring-platform" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Intelligent-monitoring-platform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Intelligent-monitoring-platform" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Intelligent-monitoring-platform" type="b2602c69:ProjectViewProjectNode" />
@@ -223,7 +283,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="351" width="1440" height="497" extended-state="0" />
+    <frame x="0" y="376" width="1440" height="472" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -232,7 +292,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2532189" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12446352" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -324,14 +384,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/camera.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="7" column="35" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="7" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -372,32 +424,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="20">
-            <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/opencv_camera.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-70">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#14#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -409,30 +440,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/video.py">
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-73">
-          <caret line="10" column="15" lean-forward="false" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
-          <folding>
-            <element signature="e#22#138#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="100">
+          <caret line="5" column="19" lean-forward="true" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/auth/manage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="5" column="67" lean-forward="false" selection-start-line="5" selection-start-column="67" selection-end-line="5" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/auth/update_password.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="25" lean-forward="false" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="17" lean-forward="true" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        <state relative-caret-position="444">
+          <caret line="33" column="35" lean-forward="false" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html">
+    <entry file="file://$PROJECT_DIR$/db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+        <state relative-caret-position="780">
+          <caret line="44" column="55" lean-forward="false" selection-start-line="44" selection-start-column="55" selection-end-line="44" selection-end-column="55" />
+          <folding>
+            <marker date="1536326278556" expanded="true" signature="889:955" ph="INSERT INTO user... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/camera.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -440,8 +495,18 @@
     <entry file="file://$PROJECT_DIR$/templates/auth/register.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <caret line="5" column="65" lean-forward="false" selection-start-line="5" selection-start-column="65" selection-end-line="5" selection-end-column="65" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/video.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="33" lean-forward="false" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="33" />
+          <folding>
+            <element signature="e#22#138#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -453,35 +518,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/auth/manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="21" column="23" lean-forward="true" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/video.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="25" column="61" lean-forward="false" selection-start-line="25" selection-start-column="61" selection-end-line="25" selection-end-column="61" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/auth.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35">
-          <caret line="94" column="85" lean-forward="false" selection-start-line="94" selection-start-column="85" selection-end-line="94" selection-end-column="85" />
+        <state relative-caret-position="1340">
+          <caret line="67" column="30" lean-forward="true" selection-start-line="67" selection-start-column="30" selection-end-line="67" selection-end-column="30" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
-            <marker date="1536321339867" expanded="true" signature="754:792" ph="SELECT id FR... user" />
-            <marker date="1536321339867" expanded="true" signature="979:1043" ph="INSERT INTO user... " />
-            <marker date="1536321339867" expanded="true" signature="1542:1579" ph="SELECT * FRO... user" />
-            <marker date="1536321339867" expanded="true" signature="2208:2239" ph="SELECT * FRO... user" />
-            <marker date="1536321339867" expanded="true" signature="2749:2814" ph="SELECT u.id,... user" />
-            <marker date="1536321339867" expanded="true" signature="3017:3046" ph="DELETE FROM user... " />
+            <marker date="1536328791208" expanded="true" signature="546:583" ph="SELECT * FRO... user" />
+            <marker date="1536328791208" expanded="true" signature="1210:1241" ph="SELECT * FRO... user" />
+            <marker date="1536328791208" expanded="true" signature="2753:2791" ph="SELECT id FR... user" />
+            <marker date="1536328791208" expanded="true" signature="2978:3042" ph="INSERT INTO user... " />
+            <marker date="1536328791208" expanded="true" signature="3439:3504" ph="SELECT u.id,... user" />
+            <marker date="1536328791208" expanded="true" signature="3722:3751" ph="DELETE FROM user... " />
+            <marker date="1536328791208" expanded="true" signature="4275:4323" ph="SELECT id, p... user" />
+            <marker date="1536328791208" expanded="true" signature="4617:4645" ph="UPDATE user... " />
+            <marker date="1536328791208" expanded="true" signature="4617:4658" ph="UPDATE user... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="259">
+            <caret line="24" column="37" lean-forward="false" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
