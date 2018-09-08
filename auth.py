@@ -28,7 +28,7 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user['id']
-            return redirect(url_for('video.video_html'))
+            return redirect(url_for('video'))
 
         flash(error)
 
@@ -49,6 +49,7 @@ def load_logged_in_user():
 def logout():
     '''用户登出'''
     session.clear()
+    g.user = None
     return redirect(url_for('auth.login'))
 
 def login_required(view):
@@ -61,26 +62,18 @@ def login_required(view):
     return wrapped_view
 
 def manager_required(view):
-    # '''拥有管理员权限才可以返回的页面装饰器'''
-    # @functools.wraps(view)
-    # def wrapped_view(**kwargs):
-    #     if g.user is None:
-    #         return redirect(url_for('auth.login'))
-    #     elif not g.user['is_manager']:
-    #         return redirect(url_for('video.video_html'))
-    #
-    #     return view(**kwargs)
-    # return wrapped_view
-    '''至少是普通用户权限才可以返回的页面装饰器'''
+    '''拥有管理员权限才可以返回的页面装饰器'''
     @functools.wraps(view)
     def wrapped_view(**kwargs):
         if g.user is None:
             return redirect(url_for('auth.login'))
+        elif not g.user['is_manager']:
+            return redirect(url_for('video'))
         return view(**kwargs)
     return wrapped_view
 
-@manager_required
 @bp.route('/register', methods=('GET', 'POST'))
+@manager_required
 def register():
     '''注册界面'''
     if request.method == 'POST':
