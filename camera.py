@@ -6,6 +6,7 @@ class Camera:
         self.camera = None
         if ip is not None:
             self.set_ip(ip)
+        self._count = 0
 
     def set_ip(self, ip):
         '''设置摄像头的ip地址'''
@@ -17,12 +18,30 @@ class Camera:
         if not self.camera.isOpened():
             raise RuntimeError('Could not start camera')
 
-
-    def get_frame(self):
-        '''获取当前时刻的帧'''
+    def get_frame(self, process={}, frequency=2):
+        '''
+        获取当前时刻的帧
+        :param process: 一个字典，表示帧需要经过哪些处理
+        :param frequency: 频率，表示经过多少帧进行一次处理
+        :return:
+        '''
         _, img = self.camera.read()
+                
+        if self._count % frequency == 0: #当前帧需要进行处理
+            if process.has_key('face_recognization'):
+                img = self.face_recognize(img)
+            elif process.has_key('object_detection'):
+                img = self.object_detect(img)
+        self._count = (self._count+1) % frequency
+
         frame = cv2.imencode('.jpg', img)[1].tobytes()
         return frame
+
+    def face_recognize(self, image):
+        return image
+
+    def object_detect(self, image):
+        return image
 
     def has_opened(self):
         '''判断摄像头是否正常工作'''
