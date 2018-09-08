@@ -26,11 +26,11 @@ class Camera:
         :return:
         '''
         _, img = self.camera.read()
-                
+
         if self._count % frequency == 0: #当前帧需要进行处理
-            if process.has_key('face_recognization'):
+            if 'face_recognization' in process.keys():
                 img = self.face_recognize(img)
-            elif process.has_key('object_detection'):
+            elif 'object_detection' in process.keys():
                 img = self.object_detect(img)
         self._count = (self._count+1) % frequency
 
