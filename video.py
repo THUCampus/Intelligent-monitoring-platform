@@ -2,7 +2,6 @@
 from flask import (
     render_template, Response, Blueprint, request, session, current_app
 )
-import sqlite3
 from .camera import Camera
 from .auth import login_required
 from .history_records import produce_record, get_history_records
@@ -30,6 +29,7 @@ def gen(camera,config,user_id, camera_id):
         for criminal_id in criminal_ids:
             db = get_db_by_config(config)
             produce_record(db, criminal_id=criminal_id, user_id=user_id, camera_id=camera_id)  # 设置camera_id暂时为0
+        # frame = camera.get_frame(process={'object_detection':1})
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
