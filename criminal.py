@@ -17,12 +17,14 @@ def register():
         name = request.form['criminal_name']
         id = request.form['criminal_id']
         photo= request.files['criminal_photo']
+
+        #将上传的图片进行人脸编码，然后序列化存到数据库中
         photo.save(photo.filename)
         image = face_recognition.load_image_file(photo.filename)
-        encoding = face_recognition.face_encodings(image)
+        encoding = face_recognition.face_encodings(image)[0]
         encoding = pickle.dumps(encoding)
-        print(encoding)
         os.remove(photo.filename)
+
         important = True if request.form['criminal_importance'] == "True" else False
 
         db = get_db()
