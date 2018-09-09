@@ -25,11 +25,11 @@ def gen(camera,config,user_id, camera_id):
     '''camera视频生成器'''
     while True:
         time.sleep(0.01)
-        frame, criminal_ids = camera.get_frame(process={'face_recognition':2})
+        # frame, criminal_ids = camera.get_frame(process={'face_recognition':2})
+        frame,criminal_ids = camera.get_frame(process={'object_detection':1})
         for criminal_id in criminal_ids:
             db = get_db_by_config(config)
             produce_record(db, criminal_id=criminal_id, user_id=user_id, camera_id=camera_id)  # 设置camera_id暂时为0
-        # frame = camera.get_frame(process={'object_detection':1})
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
