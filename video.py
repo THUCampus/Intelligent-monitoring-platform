@@ -21,7 +21,7 @@ def gen(camera):
     '''camera视频生成器'''
     while True:
         time.sleep(0.01)
-        frame = camera.get_frame(process=['object_detection'],frequency=2)
+        frame = camera.get_frame(process={'face_recognition':2})
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 

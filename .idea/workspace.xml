@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d1e92aa-980d-4ac5-b981-8d3fbd59af5b" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/face_recognize.py" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/camera.py" afterPath="$PROJECT_DIR$/camera.py" />
+      <change beforePath="$PROJECT_DIR$/video.py" afterPath="$PROJECT_DIR$/video.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,7 +20,7 @@
         <entry file="file://$PROJECT_DIR$/auth.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-350">
-              <caret line="113" column="30" lean-forward="true" selection-start-line="113" selection-start-column="30" selection-end-line="113" selection-end-column="30" />
+              <caret line="113" column="30" lean-forward="false" selection-start-line="113" selection-start-column="30" selection-end-line="113" selection-end-column="30" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
                 <marker date="1536367927087" expanded="true" signature="546:583" ph="SELECT * FRO... user" />
@@ -38,17 +41,17 @@
         <entry file="file://$PROJECT_DIR$/templates/auth/manage.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="320">
-              <caret line="16" column="51" lean-forward="true" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
+              <caret line="16" column="51" lean-forward="false" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="video.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="video.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/video.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="30" column="34" lean-forward="false" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+            <state relative-caret-position="564">
+              <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding>
                 <element signature="e#22#102#0" expanded="true" />
               </folding>
@@ -66,37 +69,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="camera.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="camera.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/camera.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="53" column="26" lean-forward="false" selection-start-line="53" selection-start-column="26" selection-end-line="53" selection-end-column="26" />
+            <state relative-caret-position="728">
+              <caret line="42" column="20" lean-forward="false" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="face_recognize.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/face_recognize.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="124">
+              <caret line="11" column="46" lean-forward="true" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
-                <marker date="1536465433420" expanded="true" signature="2605:2652" ph="SELECT id, e... criminal" />
+                <marker date="1536476263522" expanded="true" signature="1795:1842" ph="SELECT id, e... criminal" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="db.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="40" column="8" lean-forward="true" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="43" />
-              <folding>
-                <marker date="1536326278556" expanded="true" signature="889:955" ph="INSERT INTO user... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="schema.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/schema.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -144,8 +137,9 @@
         <option value="$PROJECT_DIR$/schema.sql" />
         <option value="$PROJECT_DIR$/__init__.py" />
         <option value="$PROJECT_DIR$/criminal.py" />
-        <option value="$PROJECT_DIR$/video.py" />
+        <option value="$PROJECT_DIR$/face_recognize.py" />
         <option value="$PROJECT_DIR$/camera.py" />
+        <option value="$PROJECT_DIR$/video.py" />
       </list>
     </option>
   </component>
@@ -184,6 +178,16 @@
             <path>
               <item name="Intelligent-monitoring-platform" type="b2602c69:ProjectViewProjectNode" />
               <item name="Intelligent-monitoring-platform" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Intelligent-monitoring-platform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Intelligent-monitoring-platform" type="462c0819:PsiDirectoryNode" />
+              <item name="image" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Intelligent-monitoring-platform" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Intelligent-monitoring-platform" type="462c0819:PsiDirectoryNode" />
+              <item name="object_detection" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Intelligent-monitoring-platform" type="b2602c69:ProjectViewProjectNode" />
@@ -316,33 +320,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="8" column="14" lean-forward="false" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/auth.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-            <marker date="1536367927087" expanded="true" signature="546:583" ph="SELECT * FRO... user" />
-            <marker date="1536367927087" expanded="true" signature="1199:1230" ph="SELECT * FRO... user" />
-            <marker date="1536367927087" expanded="true" signature="2503:2541" ph="SELECT id FR... user" />
-            <marker date="1536367927087" expanded="true" signature="2728:2792" ph="INSERT INTO user... " />
-            <marker date="1536367927087" expanded="true" signature="3189:3254" ph="SELECT u.id,... user" />
-            <marker date="1536367927087" expanded="true" signature="3472:3501" ph="DELETE FROM user... " />
-            <marker date="1536367927087" expanded="true" signature="4025:4073" ph="SELECT id, p... user" />
-            <marker date="1536367927087" expanded="true" signature="4367:4395" ph="UPDATE user... " />
-            <marker date="1536367927087" expanded="true" signature="4367:4408" ph="UPDATE user... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/auth/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -613,7 +590,7 @@
     <entry file="file://$PROJECT_DIR$/auth.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-350">
-          <caret line="113" column="30" lean-forward="true" selection-start-line="113" selection-start-column="30" selection-end-line="113" selection-end-column="30" />
+          <caret line="113" column="30" lean-forward="false" selection-start-line="113" selection-start-column="30" selection-end-line="113" selection-end-column="30" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
             <marker date="1536367927087" expanded="true" signature="546:583" ph="SELECT * FRO... user" />
@@ -632,7 +609,7 @@
     <entry file="file://$PROJECT_DIR$/templates/auth/manage.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
-          <caret line="16" column="51" lean-forward="true" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
+          <caret line="16" column="51" lean-forward="false" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
           <folding />
         </state>
       </provider>
@@ -648,31 +625,9 @@
     <entry file="file://$PROJECT_DIR$/db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="466">
-          <caret line="40" column="8" lean-forward="true" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="43" />
+          <caret line="40" column="8" lean-forward="false" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="43" />
           <folding>
             <marker date="1536326278556" expanded="true" signature="889:955" ph="INSERT INTO user... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/criminal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="29" column="21" lean-forward="true" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#99#0" expanded="true" />
-            <marker date="1536460500876" expanded="true" signature="1110:1148" ph="SELECT id FR... criminal" />
-            <marker date="1536460500876" expanded="true" signature="1348:1417" ph="INSERT INTO criminal... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/video.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="30" column="34" lean-forward="false" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
-          <folding>
-            <element signature="e#22#102#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -685,13 +640,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/camera.py">
+    <entry file="file://$PROJECT_DIR$/object_detect.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="53" column="26" lean-forward="false" selection-start-line="53" selection-start-column="26" selection-end-line="53" selection-end-column="26" />
+        <state relative-caret-position="306">
+          <caret line="94" column="12" lean-forward="false" selection-start-line="94" selection-start-column="12" selection-end-line="94" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/criminal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="29" column="21" lean-forward="true" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+          <folding>
+            <marker date="1536460500876" expanded="true" signature="1110:1148" ph="SELECT id FR... criminal" />
+            <marker date="1536460500876" expanded="true" signature="1348:1417" ph="INSERT INTO criminal... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/face_recognize.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="11" column="46" lean-forward="true" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
-            <marker date="1536465433420" expanded="true" signature="2605:2652" ph="SELECT id, e... criminal" />
+            <marker date="1536476263522" expanded="true" signature="1795:1842" ph="SELECT id, e... criminal" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/camera.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="728">
+          <caret line="42" column="20" lean-forward="false" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/video.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="564">
+          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding>
+            <element signature="e#22#102#0" expanded="true" />
           </folding>
         </state>
       </provider>
