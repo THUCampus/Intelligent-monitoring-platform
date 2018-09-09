@@ -43,29 +43,28 @@ class Camera:
 
     def face_recognize(self, image):
         '''人脸识别处理'''
-        small_image = cv2.resize(image, (0,0), fx=0.25, fy=0.25)
+        ratio = 0.25
+        small_image = cv2.resize(image, (0,0), fx=ratio, fy=ratio)
         rgb_small_image = small_image[:, :, ::-1]
         face_locations = face_recognition.face_locations(rgb_small_image)
         face_encodings = face_recognition.face_encodings(rgb_small_image, face_locations)
 
         face_ids = []
         for face_encoding in face_encodings:
-            matches = face_recognition.compare_faces(self.known_face_encodings, face_encoding)
+            matches = face_recognition.compare_faces(self.known_face_encodings, face_encoding, tolerance=0.6)
             id = "Unknown"
-            print(matches)
             if True in matches:
                 first_match_index = matches.index(True)
                 id = self.known_face_id[first_match_index]
 
+
             face_ids.append(id)
 
-        # print(face_ids)
-
         for (top, right, bottom, left), id in zip(face_locations, face_ids):
-            top *= 4
-            right *= 4
-            bottom *= 4
-            left *= 4
+            top *= int(1.0/ratio)
+            right *= int(1.0/ratio)
+            bottom *= int(1.0/ratio)
+            left *= int(1.0/ratio)
 
             cv2.rectangle(image, (left, top), (right, bottom), (0, 0, 255), 2)
 
