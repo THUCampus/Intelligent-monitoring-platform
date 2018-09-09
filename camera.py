@@ -1,5 +1,6 @@
 import cv2, face_recognition, pickle
 from .db import get_db
+from . import object_detect
 
 class Camera:
     '''IP 摄像头类'''
@@ -86,6 +87,7 @@ class Camera:
         print(self.known_face_id)
 
     def object_detect(self, image):
+        image=object_detect.object_detect(image)
         return image
 
     def has_opened(self):
