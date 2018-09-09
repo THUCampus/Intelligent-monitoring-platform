@@ -15,6 +15,17 @@ def get_db():
         g.db.row_factory = sqlite3.Row
     return g.db
 
+
+def get_db_by_config(config):
+    '''获取一个数据库连接'''
+    db = sqlite3.connect(
+        config,
+        detect_types=sqlite3.PARSE_DECLTYPES
+    )
+    db.row_factory = sqlite3.Row
+    return db
+
+
 def close_db(e=None):
     '''关闭数据库连接'''
     db = g.pop('db', None)

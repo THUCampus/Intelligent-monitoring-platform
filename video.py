@@ -5,8 +5,8 @@ from flask import (
 import sqlite3
 from .camera import Camera
 from .auth import login_required
-from .history_records import produce_record
-from .db import get_db
+from .history_records import produce_record, get_history_records
+from .db import get_db_by_config
 
 bp = Blueprint('video', __name__)
 
@@ -17,15 +17,9 @@ def video_html():
     session.setdefault('ip', None)
     if request.method == 'POST':
         session['ip']=request.form['ip']
-    return render_template('video.html')
-
-def _get_db(config):
-    db = sqlite3.connect(
-        config,
-        detect_types=sqlite3.PARSE_DECLTYPES
-    )
-    db.row_factory = sqlite3.Row
-    return db
+    user_id = session.get('user_id')
+    return render_template('video.html',
+                           records=get_history_records(user_id).fetchmany(5)) #监控页面只会显示最近的5条数据
 
 import time
 def gen(camera,config,user_id, camera_id):
@@ -34,7 +28,7 @@ def gen(camera,config,user_id, camera_id):
         time.sleep(0.01)
         frame, criminal_ids = camera.get_frame(process={'face_recognition':2})
         for criminal_id in criminal_ids:
-            db = _get_db(config)
+            db = get_db_by_config(config)
             produce_record(db, criminal_id=criminal_id, user_id=user_id, camera_id=camera_id)  # 设置camera_id暂时为0
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')

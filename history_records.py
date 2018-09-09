@@ -27,10 +27,8 @@ def produce_record(db, criminal_id, user_id, camera_id):
         )
         db.commit()
 
-@bp.route('/manage', methods=('GET', 'POST'))
-def manage():
-    '''返回历史警示记录界面'''
-    user_id = session.get('user_id')
+def get_history_records(user_id):
+    '''获取用户user_id的所有历史记录'''
     db = get_db()
     records = db.execute(
         'SELECT r.id, u.username as username, c.name as criminal_name, '
@@ -40,7 +38,13 @@ def manage():
         'ORDER BY r.time DESC ',
         (user_id,)
     )
-    return render_template('history_records.html', records=records)
+    return records
+
+@bp.route('/manage', methods=('GET', 'POST'))
+def manage():
+    '''返回历史警示记录界面'''
+    user_id = session.get('user_id')
+    return render_template('history_records.html', records=get_history_records(user_id))
 
 @bp.route('/<int:id>/delete', methods=('GET', 'POST'))
 def delete(id):
