@@ -1,4 +1,5 @@
 import cv2, face_recognition
+from . import object_detect
 
 class Camera:
     '''IP 摄像头类'''
@@ -83,6 +84,7 @@ class Camera:
         return image
 
     def object_detect(self, image):
+        image=object_detect.object_detect(image)
         return image
 
     def has_opened(self):
