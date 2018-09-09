@@ -54,4 +54,4 @@ class face_recognize:
         for criminal in criminals:
             self.known_face_id.append(criminal['id'])
             self.known_face_encodings.append(pickle.loads(criminal['encoding']))
-        print(self.known_face_id)
+        # print(self.known_face_id)

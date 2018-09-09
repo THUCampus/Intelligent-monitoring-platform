@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}历史警示记录{% endblock %}</h1>
+    <a class="action" href="{{url_for('auth.register')}}">注册新用户</a>
+    <a class="action" href="{{url_for('auth.update_password')}}">修改密码</a>
+    <a class="action" href="{{url_for('video.video_html')}}">监控页面</a>
+{% endblock %}
+
+{% block content %}
+    {% for record in records %}
+        <article class="post">
+            <header>
+                <div>
+                    <h1>{{record['criminal_name']}}({{ record['criminal_id'] }})
+                        在时刻{{ record['time'] }}出现在了摄像头{{ record['camera_id'] }}</h1>
+                    <div class="about">
+                        {% if record['criminal_important'] %}
+                            A级逃犯
+                        {% endif %}
+                    </div>
+                </div>
+                <form action="{{ url_for('history_records.delete', id=record['id']) }}" method="post">
+                    <input class="danger" type="submit" value="删除" onclick="return confirm('你确定要删除这条记录吗?');">
+                </form>
+            </header>
+        </article>
+    {% endfor %}
+{% endblock %}

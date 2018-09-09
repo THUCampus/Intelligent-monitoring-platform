@@ -25,22 +25,26 @@ class Camera:
 
     def get_frame(self, process={}):
         '''
-        获取当前时刻的帧
+        获取当前时刻的帧和发现的逃犯列表
         :param process: 一个词典，表示帧需要经过哪些处理，key为处理方式，value为处理频率
         :return:
         '''
         _, img = self.camera.read()
-
+        criminal_ids = []
         if 'face_recognition' in process.keys():
             img = self.face_recognize.face_recognize(
                 img, repainting=(self._count % process['face_recognition'] == 0)
             )
+            for criminal_id in self.face_recognize.face_ids:
+                if criminal_id != "Unknown":
+                    criminal_ids.append(criminal_id)
+
         elif 'object_detection' in process.keys():
             img = self.object_detect(img) # 需要提供不同的painting方式
         self._count = (self._count + 1) % (sys.maxsize/2)
 
         frame = cv2.imencode('.jpg', img)[1].tobytes()
-        return frame
+        return frame,criminal_ids
 
     def object_detect(self, image):
         image=object_detect.object_detect(image)

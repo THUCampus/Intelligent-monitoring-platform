@@ -8,6 +8,7 @@
         <a class="action" href="{{url_for('criminal.register')}}">逃犯信息录入</a>
     {% endif%}
     <a class="action" href="{{url_for('auth.update_password')}}">修改密码</a>
+    <a class="action" href="{{url_for('history_records.manage')}}">历史警示记录</a>
 {% endblock %}
 
 {% block content %}
@@ -19,5 +20,6 @@
 
     <img src="{{ url_for('video.video_feed') }}" width="500px">
 
+    <h2>最新警示记录</h2>
 
 {% endblock %}
