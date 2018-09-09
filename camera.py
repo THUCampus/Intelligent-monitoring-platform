@@ -1,4 +1,5 @@
-import cv2, face_recognition
+import cv2, face_recognition, pickle
+from .db import get_db
 from . import object_detect
 
 class Camera:
@@ -9,10 +10,7 @@ class Camera:
             self.set_ip(ip)
         self._count = 0
 
-        # 以下两行代码在罪犯数据库构建前使用
-        self.my_image = face_recognition.load_image_file("Intelligent-monitoring-platform/image/myphoto.jpg")
-        self.my_face_encoding = face_recognition.face_encodings(self.my_image)[0]
-
+        self.update_criminal_information() #初始时更新逃犯信息
 
     def set_ip(self, ip):
         '''设置摄像头的ip地址'''
@@ -45,31 +43,25 @@ class Camera:
 
     def face_recognize(self, image):
         '''人脸识别处理'''
-        known_face_encodings = [
-            self.my_face_encoding
-        ]
-
-        known_face_names = [
-            "Jiang"
-        ]
-
         small_image = cv2.resize(image, (0,0), fx=0.25, fy=0.25)
         rgb_small_image = small_image[:, :, ::-1]
         face_locations = face_recognition.face_locations(rgb_small_image)
         face_encodings = face_recognition.face_encodings(rgb_small_image, face_locations)
 
-        face_names = []
+        face_ids = []
         for face_encoding in face_encodings:
-            matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
-            name = "Unknown"
-
+            matches = face_recognition.compare_faces(self.known_face_encodings, face_encoding)
+            id = "Unknown"
+            print(matches)
             if True in matches:
                 first_match_index = matches.index(True)
-                name = known_face_names[first_match_index]
+                id = self.known_face_id[first_match_index]
 
-            face_names.append(name)
+            face_ids.append(id)
 
-        for (top, right, bottom, left), name in zip(face_locations, face_names):
+        # print(face_ids)
+
+        for (top, right, bottom, left), id in zip(face_locations, face_ids):
             top *= 4
             right *= 4
             bottom *= 4
@@ -79,9 +71,21 @@ class Camera:
 
             cv2.rectangle(image, (left, bottom - 35), (right, bottom), (0, 0, 255), cv2.FILLED)
             font = cv2.FONT_HERSHEY_DUPLEX
-            cv2.putText(image, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
+            cv2.putText(image, id, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
 
         return image
+
+    def update_criminal_information(self):
+        db = get_db()
+        criminals = db.execute(
+            'SELECT id, encoding FROM criminal ORDER BY rank'
+        )
+        self.known_face_id = []
+        self.known_face_encodings = []
+        for criminal in criminals:
+            self.known_face_id.append(criminal['id'])
+            self.known_face_encodings.append(pickle.loads(criminal['encoding']))
+        print(self.known_face_id)
 
     def object_detect(self, image):
         image=object_detect.object_detect(image)

@@ -37,4 +37,7 @@ def create_app(test_config = None):
     app.register_blueprint(video.bp)
     app.add_url_rule('/', endpoint='video')
 
+    from . import criminal
+    app.register_blueprint(criminal.bp)
+
     return app
