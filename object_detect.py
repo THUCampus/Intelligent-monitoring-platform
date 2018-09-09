@@ -3,13 +3,11 @@
 
 from distutils.version import StrictVersion
 import numpy as np
-import os
 import six.moves.urllib as urllib
-import sys
-import tarfile
 import tensorflow as tf
-import zipfile
-import cv2
+import sys,tarfile,zipfile,cv2,os
+import matplotlib
+matplotlib.use('Agg')
 
 from collections import defaultdict
 from io import StringIO
