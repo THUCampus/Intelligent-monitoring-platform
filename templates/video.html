@@ -1,21 +1,23 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}监控界面{% endblock %}</h1>
-  {% if g.user and g.user['is_manager'] %}
-    <a class="action" href="{{url_for('auth.manage')}}">管理员界面</a>
-    <a class="action" href="{{url_for('auth.register')}}">注册新用户</a>
-  {% endif%}
+    <h1>{% block title %}监控界面{% endblock %}</h1>
+    {% if g.user and g.user['is_manager'] %}
+        <a class="action" href="{{url_for('auth.manage')}}">管理员界面</a>
+        <a class="action" href="{{url_for('auth.register')}}">注册新用户</a>
+        <a class="action" href="{{url_for('criminal.register')}}">逃犯信息录入</a>
+    {% endif%}
     <a class="action" href="{{url_for('auth.update_password')}}">修改密码</a>
 {% endblock %}
 
 {% block content %}
-  <form method="post">
-     <label for="ip">IP</label>
-     <input name="ip" id="ip" required>
-     <input type="submit" value="提交">
-  </form>
+    <form method="post">
+        <label for="ip">IP</label>
+        <input name="ip" id="ip" required>
+        <input type="submit" value="提交">
+    </form>
 
-  <img src="{{ url_for('video.video_feed') }}">
+    <img src="{{ url_for('video.video_feed') }}" width="500px">
+
 
 {% endblock %}

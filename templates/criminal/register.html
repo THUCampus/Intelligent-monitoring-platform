@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}逃犯信息录入{% endblock %}</h1>
+  <a class="action" href="{{url_for('auth.manage')}}">管理页面</a>
+  <a class="action" href="{{url_for('auth.update_password')}}">修改密码</a>
+  <a class="action" href="{{url_for('video.video_html')}}">监控页面</a>
+{% endblock %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        <label>逃犯照片</label>
+        <input type="file" name="criminal_photo" required>
+        <label>逃犯身份证号</label>
+        <input name="criminal_id" required>
+        <label>逃犯名字</label>
+        <input name="criminal_name" required>
+        <label>逃犯等级</label>
+        <label><input type="radio" name="criminal_importance" value="True"/>A级</label>
+        <label><input type="radio" name="criminal_importance" value="False" checked/>B级</label>
+        <input type="submit" value="确认上传">
+    </form>
+{% endblock %}

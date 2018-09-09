@@ -1,4 +1,5 @@
 import cv2, face_recognition
+from .db import get_db
 
 class Camera:
     '''IP 摄像头类'''
@@ -11,6 +12,13 @@ class Camera:
         # 以下两行代码在罪犯数据库构建前使用
         self.my_image = face_recognition.load_image_file("Intelligent-monitoring-platform/image/myphoto.jpg")
         self.my_face_encoding = face_recognition.face_encodings(self.my_image)[0]
+        self.known_face_encodings = [
+            self.my_face_encoding
+        ]
+
+        self.known_face_names = [
+            "Jiang"
+        ]
 
 
     def set_ip(self, ip):
@@ -44,14 +52,6 @@ class Camera:
 
     def face_recognize(self, image):
         '''人脸识别处理'''
-        known_face_encodings = [
-            self.my_face_encoding
-        ]
-
-        known_face_names = [
-            "Jiang"
-        ]
-
         small_image = cv2.resize(image, (0,0), fx=0.25, fy=0.25)
         rgb_small_image = small_image[:, :, ::-1]
         face_locations = face_recognition.face_locations(rgb_small_image)
@@ -59,12 +59,12 @@ class Camera:
 
         face_names = []
         for face_encoding in face_encodings:
-            matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
+            matches = face_recognition.compare_faces(self.known_face_encodings, face_encoding)
             name = "Unknown"
 
             if True in matches:
                 first_match_index = matches.index(True)
-                name = known_face_names[first_match_index]
+                name = self.known_face_names[first_match_index]
 
             face_names.append(name)
 
