@@ -3,6 +3,7 @@ from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
 from .db import get_db,get_db_by_config
+from .auth import login_required
 from datetime import datetime
 from blinker import signal
 import json
@@ -50,6 +51,7 @@ def get_history_records(db, user_id):
 
 
 @bp.route('/manage', methods=('GET', 'POST'))
+@login_required
 def manage():
     '''返回历史警示记录界面'''
     user_id = session.get('user_id')
@@ -58,6 +60,7 @@ def manage():
 
 
 @bp.route('/<int:id>/delete', methods=('GET', 'POST'))
+@login_required
 def delete(id):
     '''删除某条历史记录'''
     db = get_db()
