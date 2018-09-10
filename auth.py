@@ -8,6 +8,7 @@ from .db import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
+
 @bp.route('/login', methods=('GET','POST'))
 def login():
     '''登录界面'''
@@ -34,6 +35,7 @@ def login():
 
     return render_template('auth/login.html')
 
+
 @bp.before_app_request
 def load_logged_in_user():
     '''载入最近登录过的用户信息'''
@@ -45,12 +47,14 @@ def load_logged_in_user():
             'SELECT * FROM user WHERE id = ?', (user_id,)
         ).fetchone()
 
+
 @bp.route('/logout')
 def logout():
     '''用户登出'''
     session.clear()
     g.user = None
     return redirect(url_for('auth.login'))
+
 
 def login_required(view):
     '''至少是普通用户权限才可以返回的页面装饰器'''
@@ -60,6 +64,7 @@ def login_required(view):
             return redirect(url_for('auth.login'))
         return view(**kwargs)
     return wrapped_view
+
 
 def manager_required(view):
     '''拥有管理员权限才可以返回的页面装饰器'''
@@ -71,6 +76,7 @@ def manager_required(view):
             return redirect(url_for('video'))
         return view(**kwargs)
     return wrapped_view
+
 
 @bp.route('/register', methods=('GET', 'POST'))
 @manager_required
@@ -104,6 +110,7 @@ def register():
         flash(error)
     return render_template('auth/register.html')
 
+
 @bp.route('/manage')
 @manager_required
 def manage():
@@ -115,6 +122,7 @@ def manage():
     )
     return render_template('auth/manage.html',users=users)
 
+
 @bp.route('/<int:id>/delete', methods=('POST','GET'))
 @manager_required
 def delete(id):
@@ -123,6 +131,7 @@ def delete(id):
     db.execute('DELETE FROM user WHERE id = ?', (id,))
     db.commit()
     return redirect(url_for('auth.manage'))
+
 
 @bp.route('/update_password', methods=('POST','GET'))
 @login_required

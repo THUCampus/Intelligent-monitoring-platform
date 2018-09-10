@@ -7,17 +7,87 @@
         <a class="action" href="{{url_for('auth.register')}}">注册新用户</a>
         <a class="action" href="{{url_for('criminal.register')}}">逃犯信息录入</a>
     {% endif%}
+    <a class="action" href="{{url_for('criminal.manage')}}">查看所有的逃犯</a>
+    <a class="action" href="{{url_for('history_records.manage')}}">历史警示记录</a>
     <a class="action" href="{{url_for('auth.update_password')}}">修改密码</a>
 {% endblock %}
 
 {% block content %}
+
+    {# 提交ip信息 #}
     <form method="post">
-        <label for="ip">IP</label>
-        <input name="ip" id="ip" required>
+        <input type="hidden" name="form_type" value="ip">
+        <label>IP</label>
+        <input name="ip" value={{ ip }} required>
+        <label>Camera ID</label>
+        <input name="camera_id" value={{ camera_id }}>
         <input type="submit" value="提交">
     </form>
 
-    <img src="{{ url_for('video.video_feed') }}" width="500px">
+    {# 提交task类别信息 #}
+    <form method="post" id="task">
+        <input type="hidden" name="form_type" value="task">
+        <label>识别任务</label>
 
+        <label>
+            <input type="radio" name="task" value="object_detection"
+                      {% if task == "object_detection" %}checked {% endif %}
+                      onclick="choose_task()"/>目标识别
+        </label>
 
+        <label>
+            <input type="radio" name="task" value="face_recognition"
+                      {% if task == "face_recognition" %}checked {% endif %}
+                      onclick="choose_task()"/>人脸识别（罪犯追踪）
+        </label>
+
+        <label>
+            <input type="radio" name="task" value="nothing"
+                      {% if task == "nothing" %}checked {% endif %}
+                      onclick="choose_task()"/>无
+        </label>
+    </form>
+
+    <script>
+        function choose_task() {
+            document.getElementById("task").submit();
+        }
+    </script>
+
+    {# 提交interval信息 #}
+    {% if task == "face_recognition" %}
+        <form method="post">
+            <input type="hidden" name="form_type" value="interval">
+            <label>消息推送的时间间隔/min</label>
+            <input name="interval" value={{ interval }} required>
+            <input type="submit" value="提交">
+        </form>
+    {% endif %}
+
+    {# 视频流 #}
+    <img src="{{ url_for('video.video_feed') }}" width="900px">
+
+    {# 警示记录 #}
+    <h2>最新警示记录</h2>
+    <section id="newest_records"></section>
+
+    <script type="text/javascript" src="{{url_for('static', filename='jquery.js')}}"></script>
+    <script type="text/javascript">
+        var source = new EventSource("{{ url_for('video.records_feed')}}");
+        source.onmessage = function (event) {
+            var records = jQuery.parseJSON(event.data);
+            document.getElementById("newest_records").innerHTML = ""
+            for(var i =0; i<records.length; i++){
+                document.getElementById("newest_records").innerHTML += "" +
+                    "<article class='post'>" +
+                        "<header>" +
+                            "<div>" +
+                                "<h1>" + records[i].criminal_name + "("+records[i].criminal_id+")"+
+                                    "在时刻"+records[i].time+"出现在了摄像头"+records[i].camera_id+"</h1>"+
+                            "</div>"+
+                        "</header>"+
+                    "</article>"
+            }
+        }
+    </script>
 {% endblock %}

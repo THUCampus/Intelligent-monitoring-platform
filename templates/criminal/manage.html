@@ -1,32 +1,36 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <h1>{% block title %}管理员界面{% endblock %}</h1>
+    <h1>{% block title %}逃犯管理界面{% endblock %}</h1>
     <a class="action" href="{{url_for('video.video_html')}}">监控页面</a>
     {% if g.user and g.user['is_manager'] %}
+        <a class="action" href="{{url_for('auth.manage')}}">管理员界面</a>
         <a class="action" href="{{url_for('auth.register')}}">注册新用户</a>
         <a class="action" href="{{url_for('criminal.register')}}">逃犯信息录入</a>
     {% endif%}
-    <a class="action" href="{{url_for('criminal.manage')}}">查看所有的逃犯</a>
     <a class="action" href="{{url_for('history_records.manage')}}">历史警示记录</a>
     <a class="action" href="{{url_for('auth.update_password')}}">修改密码</a>
 {% endblock %}
 
 {% block content %}
-    {% for user in users %}
+    {% for criminal in criminals %}
         <article class="post">
             <header>
                 <div>
-                    <h1>{{user['username']}}</h1>
+                    <h1>{{criminal['name']}}({{ criminal['id'] }})</h1>
                     <div class="about">
-                        {% if user['is_manager'] %}
-                            管理员
+                        {% if criminal['important'] %}
+                            A级
+                        {% else %}
+                            B级
                         {% endif %}
                     </div>
                 </div>
-                <form action="{{ url_for('auth.delete', id=user['id']) }}" method="post">
-                    <input class="danger" type="submit" value="删除" onclick="return confirm('你确定吗?');">
-                </form>
+                {% if g.user and g.user['is_manager'] %}
+                    <form action="{{ url_for('criminal.delete', rank=criminal['rank']) }}" method="post">
+                        <input class="danger" type="submit" value="删除" onclick="return confirm('你确定吗?');">
+                    </form>
+                {% endif %}
             </header>
         </article>
     {% endfor %}

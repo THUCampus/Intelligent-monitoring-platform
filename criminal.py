@@ -5,7 +5,7 @@ from flask import (
 import face_recognition,pickle,os
 
 from .db import get_db
-from .auth import manager_required
+from .auth import login_required,manager_required
 
 bp = Blueprint('criminal', __name__, url_prefix='/criminal')
 
@@ -49,3 +49,24 @@ def register():
 
         flash(error)
     return render_template('criminal/register.html')
+
+
+@bp.route('/manage')
+@login_required
+def manage():
+    '''返回所有的逃犯'''
+    db = get_db()
+    criminals = db.execute(
+        'SELECT id, name, important,rank FROM criminal'
+    )
+    return render_template('criminal/manage.html',criminals=criminals)
+
+
+@bp.route('/<int:rank>/delete', methods=('POST','GET'))
+@manager_required
+def delete(rank):
+    '''删除某个罪犯'''
+    db = get_db()
+    db.execute('DELETE FROM criminal WHERE rank = ?', (rank,))
+    db.commit()
+    return redirect(url_for('criminal.manage'))
