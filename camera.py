@@ -1,6 +1,7 @@
 import cv2,sys
 from . import face_recognize
-from . import object_detect
+from . import object_detection
+from . import object_tracking
 
 class Camera:
     '''IP 摄像头类'''
@@ -9,6 +10,13 @@ class Camera:
         if ip is not None:
             self.set_ip(ip)
         self._count = 0
+
+        #加入物体识别对象和物体追踪对象
+        self.object_predictor=object_detection.object_detector(
+                'Intelligent-monitoring-platform/object_detection_model/MobileNetSSD_deploy.caffemodel',
+                'Intelligent-monitoring-platform/object_detection_model/MobileNetSSD_deploy.prototxt',
+                'Intelligent-monitoring-platform/object_detection_model/MobileNet_classes.txt')
+        self.object_tracker=object_tracking.object_tracker(self.object_predictor)
 
         self.face_recognize = face_recognize.face_recognize()
         self.face_recognize.update_criminal_information() #更新罪犯信息
@@ -40,13 +48,17 @@ class Camera:
                     criminal_ids.append(criminal_id)
         elif 'object_detection' in process.keys():
             img = self.object_detect(img) # 需要提供不同的painting方式
+        elif 'object_track' in process.keys():
+            img=self.object_tracker.track(img)
         self._count = (self._count + 1) % (sys.maxsize/2)
 
         frame = cv2.imencode('.jpg', img)[1].tobytes()
         return frame,criminal_ids
 
     def object_detect(self, image):
-        image=object_detect.object_detect(image)
+        out=self.object_predictor.predict(image)
+        objects_detected=self.object_predictor.operate_out(image,out,0.6)
+        self.object_predictor.operate_frame(image,objects_detected)
         return image
 
     def has_opened(self):

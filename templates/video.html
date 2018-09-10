@@ -34,6 +34,12 @@
                       {% if task == "object_detection" %}checked {% endif %}
                       onclick="choose_task()"/>目标识别
         </label>
+		
+		<label>
+            <input type="radio" name="task" value="object_track"
+                      {% if task == "object_track" %}checked {% endif %}
+                      onclick="choose_task()"/>物体追踪
+        </label>
 
         <label>
             <input type="radio" name="task" value="face_recognition"
