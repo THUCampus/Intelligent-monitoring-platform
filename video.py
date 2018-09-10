@@ -16,10 +16,12 @@ bp = Blueprint('video', __name__)
 def video_html():
     '''返回监控界面'''
     session.setdefault('ip', None)
+    session.setdefault('camera_id', '0')
     session.setdefault('task', "face_recognition")
     if request.method == 'POST':
         if request.form['form_type'] == "ip":
             session['ip']=request.form['ip']
+            session['camera_id'] = request.form['camera_id']
         elif request.form['form_type'] == 'task':
             session['task'] = request.form['task']
     return render_template('video.html', task=session.get('task'))
@@ -47,7 +49,7 @@ def video_feed():
     if not camera.has_opened():
         camera = Camera(0)
     return Response(gen(camera,config=current_app.config['DATABASE'], user_id=user_id,
-                        camera_id=camera_id, process=process),
+                        camera_id=session['camera_id'], process=process),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
