@@ -43,6 +43,15 @@
         }
     </script>
 
+    {% if task == "face_recognition" %}
+        <form method="post">
+            <input type="hidden" name="form_type" value="interval"> {# 提交interval信息 #}
+            <label>消息推送的时间间隔/min</label>
+            <input name="interval" value={{ interval }} required>
+            <input type="submit" value="提交">
+        </form>
+    {% endif %}
+
     <img src="{{ url_for('video.video_feed') }}" width="900px">
 
     <h2>最新警示记录</h2>

@@ -18,23 +18,27 @@ def video_html():
     session.setdefault('ip', None)
     session.setdefault('camera_id', '0')
     session.setdefault('task', "face_recognition")
+    session.setdefault('interval', 1)
     if request.method == 'POST':
         if request.form['form_type'] == "ip":
             session['ip']=request.form['ip']
             session['camera_id'] = request.form['camera_id']
         elif request.form['form_type'] == 'task':
             session['task'] = request.form['task']
-    return render_template('video.html', task=session.get('task'))
+        elif request.form['form_type'] == 'interval':
+            session['interval'] = request.form['interval']
+    return render_template('video.html', task=session.get('task'), interval=session.get('interval'))
 
 
-def gen(camera,config,user_id, camera_id,process):
+def gen(camera,config,user_id, camera_id,process,interval):
     '''camera视频生成器'''
     while True:
         time.sleep(0.01)
         frame, criminal_ids = camera.get_frame(process=process)
         for criminal_id in criminal_ids:
             db = get_db_by_config(config)
-            produce_record(db, criminal_id=criminal_id, user_id=user_id, camera_id=camera_id)  # 设置camera_id暂时为0
+            produce_record(db, criminal_id=criminal_id, user_id=user_id,
+                           camera_id=camera_id,interval=interval)
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
@@ -45,11 +49,10 @@ def video_feed():
     camera = Camera(ip=session.get('ip'))
     process = {session.get('task'):1}
     user_id = session.get('user_id')
-    camera_id = 0
     if not camera.has_opened():
         camera = Camera(0)
     return Response(gen(camera,config=current_app.config['DATABASE'], user_id=user_id,
-                        camera_id=session['camera_id'], process=process),
+                        camera_id=session['camera_id'], process=process, interval=session.get('interval')),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 

@@ -12,8 +12,11 @@ records_updated_signal = signal("update records")
 bp = Blueprint('history_records', __name__, url_prefix='/history_records')
 
 
-def produce_record(db, criminal_id, user_id, camera_id):
-    '''生成一条警示记录'''
+def produce_record(db, criminal_id, user_id, camera_id, interval):
+    '''
+    生成一条警示记录
+    interval是生成记录之间的最少间隔
+    '''
     last_time = db.execute(
         'SELECT time FROM history_records WHERE criminal_id = ? AND user_id = ? AND camera_id = ? ORDER BY time DESC',
         (criminal_id, user_id, camera_id)
@@ -21,7 +24,7 @@ def produce_record(db, criminal_id, user_id, camera_id):
 
     current_time = datetime.now()
     if last_time is None or \
-            ((current_time - datetime.strptime(last_time['time'], "%Y-%m-%d %H:%M:%S")).seconds >= 60): #调试时使用1s
+            ((current_time - datetime.strptime(last_time['time'], "%Y-%m-%d %H:%M:%S")).seconds >= 60 * float(interval)): #调试时使用1s
         # ((current_time-datetime.strptime(last_time['time'], "%Y-%m-%d %H:%M:%S")).seconds >= 60 * 5):
         #如果和上次记录时间相差5分钟以上，则生成新的一条记录
         db.execute(
