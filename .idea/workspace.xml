@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d1e92aa-980d-4ac5-b981-8d3fbd59af5b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/criminal.py" afterPath="$PROJECT_DIR$/criminal.py" />
-      <change beforePath="$PROJECT_DIR$/templates/auth/manage.html" afterPath="$PROJECT_DIR$/templates/auth/manage.html" />
-      <change beforePath="$PROJECT_DIR$/templates/auth/register.html" afterPath="$PROJECT_DIR$/templates/auth/register.html" />
-      <change beforePath="$PROJECT_DIR$/templates/auth/update_password.html" afterPath="$PROJECT_DIR$/templates/auth/update_password.html" />
-      <change beforePath="$PROJECT_DIR$/templates/criminal/manage.html" afterPath="$PROJECT_DIR$/templates/criminal/manage.html" />
-      <change beforePath="$PROJECT_DIR$/templates/criminal/register.html" afterPath="$PROJECT_DIR$/templates/criminal/register.html" />
-      <change beforePath="$PROJECT_DIR$/templates/history_records.html" afterPath="$PROJECT_DIR$/templates/history_records.html" />
+      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change beforePath="$PROJECT_DIR$/auth.py" afterPath="$PROJECT_DIR$/auth.py" />
+      <change beforePath="$PROJECT_DIR$/camera.py" afterPath="$PROJECT_DIR$/camera.py" />
+      <change beforePath="$PROJECT_DIR$/face_recognize.py" afterPath="$PROJECT_DIR$/face_recognize.py" />
+      <change beforePath="$PROJECT_DIR$/history_records.py" afterPath="$PROJECT_DIR$/history_records.py" />
       <change beforePath="$PROJECT_DIR$/templates/video.html" afterPath="$PROJECT_DIR$/templates/video.html" />
+      <change beforePath="$PROJECT_DIR$/video.py" afterPath="$PROJECT_DIR$/video.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,113 +18,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="auth.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/auth.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="154" column="13" lean-forward="true" selection-start-line="154" selection-start-column="13" selection-end-line="154" selection-end-column="13" />
-              <folding>
-                <element signature="e#0#16#0" expanded="true" />
-                <marker date="1536575688749" expanded="true" signature="546:583" ph="SELECT * FRO... user" />
-                <marker date="1536575688749" expanded="true" signature="1199:1230" ph="SELECT * FRO... user" />
-                <marker date="1536575688749" expanded="true" signature="2503:2541" ph="SELECT id FR... user" />
-                <marker date="1536575688749" expanded="true" signature="2728:2792" ph="INSERT INTO user... " />
-                <marker date="1536575688749" expanded="true" signature="3189:3254" ph="SELECT u.id,... user" />
-                <marker date="1536575688749" expanded="true" signature="3472:3501" ph="DELETE FROM user... " />
-                <marker date="1536575688749" expanded="true" signature="4025:4073" ph="SELECT id, p... user" />
-                <marker date="1536575688749" expanded="true" signature="4367:4395" ph="UPDATE user... " />
-                <marker date="1536575688749" expanded="true" signature="4367:4408" ph="UPDATE user... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="criminal.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/criminal.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="65" column="17" lean-forward="false" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#99#0" expanded="true" />
-                <marker date="1536576351021" expanded="true" signature="1125:1163" ph="SELECT id FR... criminal" />
-                <marker date="1536576351021" expanded="true" signature="1363:1432" ph="INSERT INTO criminal... " />
-                <marker date="1536576351021" expanded="true" signature="1774:1811" ph="SELECT u.id,... user" />
-                <marker date="1536576351021" expanded="true" signature="1774:1819" ph="SELECT id, n... criminal" />
-                <marker date="1536576351021" expanded="true" signature="2043:2078" ph="DELETE FROM criminal... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="video.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/video.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-410">
-              <caret line="29" column="93" lean-forward="false" selection-start-line="29" selection-start-column="93" selection-end-line="29" selection-end-column="93" />
-              <folding>
-                <element signature="e#22#115#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="schema.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/schema.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="face_recognize.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/face_recognize.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="22" lean-forward="false" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
-              <folding>
-                <marker date="1536570845105" expanded="true" signature="2222:2280" ph="SELECT id, e... criminal" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="273">
-                <caret line="22" column="6" lean-forward="true" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="history_records.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/history_records.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-850">
-              <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#16#0" expanded="true" />
-                <marker date="1536575526869" expanded="true" signature="560:648" ph="SELECT time " />
-                <marker date="1536575526869" expanded="true" signature="560:667" ph="SELECT time " />
-                <marker date="1536575526869" expanded="true" signature="1098:1138" ph="INSERT INTO history_records... " />
-                <marker date="1536575526869" expanded="true" signature="1098:1164" ph="INSERT INTO history_records... " />
-                <marker date="1536575526869" expanded="true" signature="1098:1188" ph="INSERT INTO history_records... " />
-                <marker date="1536575526869" expanded="true" signature="1098:1198" ph="INSERT INTO history_records... " />
-                <marker date="1536575526869" expanded="true" signature="1472:1776" ph="SELECT r.id,... user" />
-                <marker date="1536575526869" expanded="true" signature="2213:2253" ph="DELETE FROM history_records... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -157,20 +50,13 @@
         <option value="$PROJECT_DIR$/opencv_camera.py" />
         <option value="$PROJECT_DIR$/templates/auth/login.html" />
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/templates/criminal_register.html" />
         <option value="$PROJECT_DIR$/schema.sql" />
         <option value="$PROJECT_DIR$/__init__.py" />
         <option value="$PROJECT_DIR$/templates/history_records/base.html" />
         <option value="$PROJECT_DIR$/db.py" />
-        <option value="$PROJECT_DIR$/camera.py" />
         <option value="$PROJECT_DIR$/templates/base.html" />
-        <option value="$PROJECT_DIR$/face_recognize.py" />
-        <option value="$PROJECT_DIR$/video.py" />
         <option value="$PROJECT_DIR$/templates/criminal.html" />
-        <option value="$PROJECT_DIR$/history_records.py" />
-        <option value="$PROJECT_DIR$/auth.py" />
-        <option value="$PROJECT_DIR$/templates/video.html" />
         <option value="$PROJECT_DIR$/templates/history_records.html" />
         <option value="$PROJECT_DIR$/templates/criminal/register.html" />
         <option value="$PROJECT_DIR$/templates/auth/update_password.html" />
@@ -178,6 +64,13 @@
         <option value="$PROJECT_DIR$/templates/auth/manage.html" />
         <option value="$PROJECT_DIR$/templates/criminal/manage.html" />
         <option value="$PROJECT_DIR$/criminal.py" />
+        <option value="$PROJECT_DIR$/face_recognize.py" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/templates/video.html" />
+        <option value="$PROJECT_DIR$/video.py" />
+        <option value="$PROJECT_DIR$/camera.py" />
+        <option value="$PROJECT_DIR$/history_records.py" />
+        <option value="$PROJECT_DIR$/auth.py" />
       </list>
     </option>
   </component>
@@ -303,7 +196,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="295" width="1440" height="552" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -311,7 +203,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12875536" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12875536" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32822758" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -402,15 +294,15 @@
           <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
-            <marker date="1536575688749" expanded="true" signature="546:583" ph="SELECT * FRO... user" />
-            <marker date="1536575688749" expanded="true" signature="1199:1230" ph="SELECT * FRO... user" />
-            <marker date="1536575688749" expanded="true" signature="2503:2541" ph="SELECT id FR... user" />
-            <marker date="1536575688749" expanded="true" signature="2728:2792" ph="INSERT INTO user... " />
-            <marker date="1536575688749" expanded="true" signature="3189:3254" ph="SELECT u.id,... user" />
-            <marker date="1536575688749" expanded="true" signature="3472:3501" ph="DELETE FROM user... " />
-            <marker date="1536575688749" expanded="true" signature="4025:4073" ph="SELECT id, p... user" />
-            <marker date="1536575688749" expanded="true" signature="4367:4395" ph="UPDATE user... " />
-            <marker date="1536575688749" expanded="true" signature="4367:4408" ph="UPDATE user... " />
+            <marker date="1536578336693" expanded="true" signature="547:584" ph="SELECT * FRO... user" />
+            <marker date="1536578336693" expanded="true" signature="1201:1232" ph="SELECT * FRO... user" />
+            <marker date="1536578336693" expanded="true" signature="2509:2547" ph="SELECT id FR... user" />
+            <marker date="1536578336693" expanded="true" signature="2734:2798" ph="INSERT INTO user... " />
+            <marker date="1536578336693" expanded="true" signature="3196:3261" ph="SELECT u.id,... user" />
+            <marker date="1536578336693" expanded="true" signature="3480:3509" ph="DELETE FROM user... " />
+            <marker date="1536578336693" expanded="true" signature="4034:4082" ph="SELECT id, p... user" />
+            <marker date="1536578336693" expanded="true" signature="4376:4404" ph="UPDATE user... " />
+            <marker date="1536578336693" expanded="true" signature="4376:4417" ph="UPDATE user... " />
           </folding>
         </state>
       </provider>
@@ -557,14 +449,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/camera.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="737">
-          <caret line="41" column="30" lean-forward="false" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/criminal.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -623,14 +507,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/video.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/auth/manage.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -647,28 +523,83 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/auth.py">
+    <entry file="file://$PROJECT_DIR$/schema.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="154" column="13" lean-forward="true" selection-start-line="154" selection-start-column="13" selection-end-line="154" selection-end-column="13" />
+        <state relative-caret-position="220">
+          <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="259">
+            <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/video.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-170">
+          <caret line="69" column="7" lean-forward="true" selection-start-line="69" selection-start-column="7" selection-end-line="69" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/camera.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history_records.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="107" column="59" lean-forward="false" selection-start-line="107" selection-start-column="59" selection-end-line="107" selection-end-column="59" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
-            <marker date="1536575688749" expanded="true" signature="546:583" ph="SELECT * FRO... user" />
-            <marker date="1536575688749" expanded="true" signature="1199:1230" ph="SELECT * FRO... user" />
-            <marker date="1536575688749" expanded="true" signature="2503:2541" ph="SELECT id FR... user" />
-            <marker date="1536575688749" expanded="true" signature="2728:2792" ph="INSERT INTO user... " />
-            <marker date="1536575688749" expanded="true" signature="3189:3254" ph="SELECT u.id,... user" />
-            <marker date="1536575688749" expanded="true" signature="3472:3501" ph="DELETE FROM user... " />
-            <marker date="1536575688749" expanded="true" signature="4025:4073" ph="SELECT id, p... user" />
-            <marker date="1536575688749" expanded="true" signature="4367:4395" ph="UPDATE user... " />
-            <marker date="1536575688749" expanded="true" signature="4367:4408" ph="UPDATE user... " />
+            <marker date="1536578293615" expanded="true" signature="710:798" ph="SELECT time " />
+            <marker date="1536578293615" expanded="true" signature="710:817" ph="SELECT time " />
+            <marker date="1536578293615" expanded="true" signature="1156:1196" ph="INSERT INTO history_records... " />
+            <marker date="1536578293615" expanded="true" signature="1156:1222" ph="INSERT INTO history_records... " />
+            <marker date="1536578293615" expanded="true" signature="1156:1246" ph="INSERT INTO history_records... " />
+            <marker date="1536578293615" expanded="true" signature="1156:1256" ph="INSERT INTO history_records... " />
+            <marker date="1536578293615" expanded="true" signature="1557:1861" ph="SELECT r.id,... user" />
+            <marker date="1536578293615" expanded="true" signature="2298:2338" ph="DELETE FROM history_records... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/video.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="56" column="28" lean-forward="true" selection-start-line="56" selection-start-column="28" selection-end-line="56" selection-end-column="28" />
+          <folding>
+            <element signature="e#22#115#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/face_recognize.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="58" column="17" lean-forward="false" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+            <marker date="1536576556603" expanded="true" signature="2221:2279" ph="SELECT id, e... criminal" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/criminal.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
+        <state relative-caret-position="747">
           <caret line="65" column="17" lean-forward="false" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
           <folding>
             <element signature="e#0#99#0" expanded="true" />
@@ -681,60 +612,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/face_recognize.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="22" lean-forward="false" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
-          <folding>
-            <marker date="1536570845105" expanded="true" signature="2222:2280" ph="SELECT id, e... criminal" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/history_records.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-850">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-            <marker date="1536575526869" expanded="true" signature="560:648" ph="SELECT time " />
-            <marker date="1536575526869" expanded="true" signature="560:667" ph="SELECT time " />
-            <marker date="1536575526869" expanded="true" signature="1098:1138" ph="INSERT INTO history_records... " />
-            <marker date="1536575526869" expanded="true" signature="1098:1164" ph="INSERT INTO history_records... " />
-            <marker date="1536575526869" expanded="true" signature="1098:1188" ph="INSERT INTO history_records... " />
-            <marker date="1536575526869" expanded="true" signature="1098:1198" ph="INSERT INTO history_records... " />
-            <marker date="1536575526869" expanded="true" signature="1472:1776" ph="SELECT r.id,... user" />
-            <marker date="1536575526869" expanded="true" signature="2213:2253" ph="DELETE FROM history_records... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/video.py">
+    <entry file="file://$PROJECT_DIR$/auth.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-410">
-          <caret line="29" column="93" lean-forward="false" selection-start-line="29" selection-start-column="93" selection-end-line="29" selection-end-column="93" />
+          <caret line="134" column="0" lean-forward="true" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
           <folding>
-            <element signature="e#22#115#0" expanded="true" />
+            <element signature="e#0#16#0" expanded="true" />
+            <marker date="1536578336693" expanded="true" signature="547:584" ph="SELECT * FRO... user" />
+            <marker date="1536578336693" expanded="true" signature="1201:1232" ph="SELECT * FRO... user" />
+            <marker date="1536578336693" expanded="true" signature="2509:2547" ph="SELECT id FR... user" />
+            <marker date="1536578336693" expanded="true" signature="2734:2798" ph="INSERT INTO user... " />
+            <marker date="1536578336693" expanded="true" signature="3196:3261" ph="SELECT u.id,... user" />
+            <marker date="1536578336693" expanded="true" signature="3480:3509" ph="DELETE FROM user... " />
+            <marker date="1536578336693" expanded="true" signature="4034:4082" ph="SELECT id, p... user" />
+            <marker date="1536578336693" expanded="true" signature="4376:4404" ph="UPDATE user... " />
+            <marker date="1536578336693" expanded="true" signature="4376:4417" ph="UPDATE user... " />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/schema.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="273">
-            <caret line="22" column="6" lean-forward="true" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
-            <folding />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>

@@ -56,7 +56,7 @@ class face_recognize:
         return image
 
     def update_criminal_information(self):
-        '''更新罪犯数据库'''
+        '''更新罪犯数据'''
         db = get_db()
         criminals = db.execute(
             'SELECT id, encoding, important FROM criminal ORDER BY rank'

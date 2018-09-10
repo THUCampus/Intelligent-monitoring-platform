@@ -38,7 +38,6 @@ class Camera:
             for criminal_id in self.face_recognize.face_ids:
                 if criminal_id != "Unknown":
                     criminal_ids.append(criminal_id)
-
         elif 'object_detection' in process.keys():
             img = self.object_detect(img) # 需要提供不同的painting方式
         self._count = (self._count + 1) % (sys.maxsize/2)

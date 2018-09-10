@@ -11,11 +11,12 @@ from .history_records import RecordsGenerator
 
 bp = Blueprint('video', __name__)
 
+
 @bp.route('/', methods=('GET', 'POST'))
 @login_required
 def video_html():
     '''返回监控界面'''
-    session.setdefault('ip', None)
+    session.setdefault('ip', "0")
     session.setdefault('camera_id', '0')
     session.setdefault('task', "face_recognition")
     session.setdefault('interval', 1)
@@ -27,13 +28,15 @@ def video_html():
             session['task'] = request.form['task']
         elif request.form['form_type'] == 'interval':
             session['interval'] = request.form['interval']
-    return render_template('video.html', task=session.get('task'), interval=session.get('interval'))
+    return render_template('video.html',
+                           ip=session.get("ip"), camera_id = session.get("camera_id"),
+                           task=session.get('task'), interval=session.get('interval'))
 
 
 def gen(camera,config,user_id, camera_id,process,interval):
     '''camera视频生成器'''
     while True:
-        time.sleep(0.01)
+        time.sleep(0.01) # 每个0.01s推送一帧视频
         frame, criminal_ids = camera.get_frame(process=process)
         for criminal_id in criminal_ids:
             db = get_db_by_config(config)
@@ -47,10 +50,11 @@ def gen(camera,config,user_id, camera_id,process,interval):
 def video_feed():
     '''返回监控界面中的视频部分'''
     camera = Camera(ip=session.get('ip'))
-    process = {session.get('task'):1}
+    process = {session.get('task'):1}#获取图像的处理方式
     user_id = session.get('user_id')
-    if not camera.has_opened():
-        camera = Camera(0)
+    if not camera.has_opened():#如果打开失败
+        session['ip'] = "0"
+        camera = Camera("0")
     return Response(gen(camera,config=current_app.config['DATABASE'], user_id=user_id,
                         camera_id=session['camera_id'], process=process, interval=session.get('interval')),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
@@ -58,7 +62,7 @@ def video_feed():
 
 @bp.route('/records_feed')
 def records_feed():
-    '''返回监控界面的历史记录部分'''
+    '''返回监控界面的警示记录部分'''
     user_id = session.get("user_id")
     return Response(RecordsGenerator(user_id=user_id,db_config=current_app.config['DATABASE']),
                     mimetype='text/event-stream')
