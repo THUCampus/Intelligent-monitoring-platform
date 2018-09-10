@@ -7,14 +7,15 @@
 - schema.sql 实现数据表的创建。
 - auth.py 提供了网站中管理员和普通用户的登录、跳转等功能。
 - video.py 实现了向前端推送视频和警示记录
-- object_detect.py中实现了用模型进行物体检测的功能。
+- object_detection.py中实现了用模型进行物体检测的功能。
+- object_tracking.py中实现了用第三方库进行物体追踪的功能。
 - face_recognize.py 实现对给定图像进行人脸识别（搜索罪犯）。
 - criminal.py 提供了逃犯信息的录入、删除和查看。
 - history_records.py 提供了历史警示记录的生成、获取、删除；通过信号机制连接数据库，通过生成器向前端推送警示信息。
 - templates/中，base.html为基础界面，video.html为监控视频展示界面，history_records.html为完整的历史警示记录界面。
 - templates/auth/中，login.html登录页面，manage.html管理界面，register.html注册界面，update_password.html修改密码界面
 - templates/criminal/中，manage.html为逃犯的管理界面，register.html为逃犯信息录入界面
-- object_detection/中是与物体检测相关的各种库与模型。
+- object_detection_model/中是与物体检测相关的模型。
 
 ## 部署说明
 - 在目录Intelligent-monitoring-platform的上级目录打开命令行，输入
