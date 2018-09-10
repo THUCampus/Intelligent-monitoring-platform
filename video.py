@@ -19,7 +19,7 @@ def video_html():
     session.setdefault('ip', "0")
     session.setdefault('camera_id', '0')
     session.setdefault('task', "face_recognition")
-    session.setdefault('interval', 1)
+    session.setdefault('interval', 5)
     if request.method == 'POST':
         if request.form['form_type'] == "ip":
             session['ip']=request.form['ip']
