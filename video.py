@@ -5,7 +5,8 @@ from flask import (
 from .camera import Camera
 from .auth import login_required
 from .history_records import produce_record, get_history_records
-from .db import get_db_by_config
+from .db import get_db_by_config,get_db
+from .history_records import RecordsGenerator
 
 bp = Blueprint('video', __name__)
 
@@ -17,21 +18,23 @@ def video_html():
     if request.method == 'POST':
         session['ip']=request.form['ip']
     user_id = session.get('user_id')
+    db = get_db()
     return render_template('video.html',
-                           records=get_history_records(user_id).fetchmany(5)) #监控页面只会显示最近的5条数据
+                           records=get_history_records(db, user_id).fetchmany(5)) #监控页面只会显示最近的5条数据
 
 import time
 def gen(camera,config,user_id, camera_id):
     '''camera视频生成器'''
     while True:
         time.sleep(0.01)
-        # frame, criminal_ids = camera.get_frame(process={'face_recognition':2})
-        frame,criminal_ids = camera.get_frame(process={'object_detection':1})
+        frame, criminal_ids = camera.get_frame(process={'face_recognition':2})
+        # frame,criminal_ids = camera.get_frame(process={'object_detection':1})
         for criminal_id in criminal_ids:
             db = get_db_by_config(config)
             produce_record(db, criminal_id=criminal_id, user_id=user_id, camera_id=camera_id)  # 设置camera_id暂时为0
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+
 
 @bp.route('/video_feed')
 def video_feed():
@@ -43,3 +46,11 @@ def video_feed():
         camera = Camera(0)
     return Response(gen(camera,config=current_app.config['DATABASE'], user_id=user_id, camera_id=camera_id),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
+
+
+@bp.route('/records_feed')
+def records_feed():
+    '''返回监控界面的历史记录部分'''
+    user_id = session.get("user_id")
+    return Response(RecordsGenerator(user_id=user_id,db_config=current_app.config['DATABASE']),
+                    mimetype='text/event-stream')

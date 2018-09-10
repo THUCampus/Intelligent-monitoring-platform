@@ -21,22 +21,25 @@
     <img src="{{ url_for('video.video_feed') }}" width="900px">
 
     <h2>最新警示记录</h2>
-    {% for record in records %}
-        <article class="post">
-            <header>
-                <div>
-                    <h1>{{record['criminal_name']}}({{ record['criminal_id'] }})
-                        在时刻{{ record['time'] }}出现在了摄像头{{ record['camera_id'] }}</h1>
-                    <div class="about">
-                        {% if record['criminal_important'] %}
-                            A级逃犯
-                        {% endif %}
-                    </div>
-                </div>
-                <form action="{{ url_for('history_records.delete', id=record['id']) }}" method="post">
-                    <input class="danger" type="submit" value="删除" onclick="return confirm('你确定要删除这条记录吗?');">
-                </form>
-            </header>
-        </article>
-    {% endfor %}
+    <section id="newest_records"></section>
+
+    <script type="text/javascript" src="{{url_for('static', filename='jquery.js')}}"></script>
+    <script type="text/javascript">
+        var source = new EventSource("{{ url_for('video.records_feed')}}");
+        source.onmessage = function (event) {
+            var records = jQuery.parseJSON(event.data);
+            document.getElementById("newest_records").innerHTML = ""
+            for(var i =0; i<records.length; i++){
+                document.getElementById("newest_records").innerHTML += "" +
+                    "<article class='post'>" +
+                        "<header>" +
+                            "<div>" +
+                                "<h1>" + records[i].criminal_name + "("+records[i].criminal_id+")"+
+                                    "在时刻"+records[i].time+"出现在了摄像头"+records[i].camera_id+"</h1>"+
+                            "</div>"+
+                        "</header>"+
+                    "</article>"
+            }
+        }
+    </script>
 {% endblock %}
