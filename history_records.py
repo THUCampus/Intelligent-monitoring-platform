@@ -98,5 +98,4 @@ class RecordsGenerator:
             db = get_db_by_config(config=self.db_config)
             records = get_history_records(db, self.user_id).fetchmany(5)
             records = _create_json_response(records)
-            print(records)
             yield "data: " + records + "\n\n"

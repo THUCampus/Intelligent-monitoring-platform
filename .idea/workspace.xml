@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9d1e92aa-980d-4ac5-b981-8d3fbd59af5b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/history_records.py" afterPath="$PROJECT_DIR$/history_records.py" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
       <change beforePath="$PROJECT_DIR$/templates/video.html" afterPath="$PROJECT_DIR$/templates/video.html" />
       <change beforePath="$PROJECT_DIR$/video.py" afterPath="$PROJECT_DIR$/video.py" />
     </list>
@@ -16,32 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="auth.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/auth.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="123" column="15" lean-forward="false" selection-start-line="123" selection-start-column="15" selection-end-line="123" selection-end-column="15" />
-              <folding>
-                <element signature="e#0#16#0" expanded="true" />
-                <marker date="1536367927087" expanded="true" signature="546:583" ph="SELECT * FRO... user" />
-                <marker date="1536367927087" expanded="true" signature="1199:1230" ph="SELECT * FRO... user" />
-                <marker date="1536367927087" expanded="true" signature="2503:2541" ph="SELECT id FR... user" />
-                <marker date="1536367927087" expanded="true" signature="2728:2792" ph="INSERT INTO user... " />
-                <marker date="1536367927087" expanded="true" signature="3189:3254" ph="SELECT u.id,... user" />
-                <marker date="1536367927087" expanded="true" signature="3472:3501" ph="DELETE FROM user... " />
-                <marker date="1536367927087" expanded="true" signature="4025:4073" ph="SELECT id, p... user" />
-                <marker date="1536367927087" expanded="true" signature="4367:4395" ph="UPDATE user... " />
-                <marker date="1536367927087" expanded="true" signature="4367:4408" ph="UPDATE user... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="video.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="video.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/video.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-90">
-              <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+            <state relative-caret-position="266">
+              <caret line="24" column="63" lean-forward="false" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
               <folding>
                 <element signature="e#22#115#0" expanded="true" />
               </folding>
@@ -49,53 +27,41 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="video.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/video.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="26" column="85" lean-forward="false" selection-start-line="26" selection-start-column="85" selection-end-line="26" selection-end-column="85" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="camera.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/camera.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="77">
+              <caret line="41" column="30" lean-forward="false" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="history_records.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/history_records.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1252">
-              <caret line="14" column="15" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="18" />
+            <state relative-caret-position="130">
+              <caret line="92" column="31" lean-forward="true" selection-start-line="92" selection-start-column="31" selection-end-line="92" selection-end-column="31" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
-                <marker date="1536562171343" expanded="true" signature="482:570" ph="SELECT time " />
-                <marker date="1536562171343" expanded="true" signature="482:589" ph="SELECT time " />
-                <marker date="1536562171343" expanded="true" signature="1002:1042" ph="INSERT INTO history_records... " />
-                <marker date="1536562171343" expanded="true" signature="1002:1068" ph="INSERT INTO history_records... " />
-                <marker date="1536562171343" expanded="true" signature="1002:1092" ph="INSERT INTO history_records... " />
-                <marker date="1536562171343" expanded="true" signature="1002:1102" ph="INSERT INTO history_records... " />
-                <marker date="1536562171343" expanded="true" signature="1376:1680" ph="SELECT r.id,... user" />
-                <marker date="1536562171343" expanded="true" signature="2085:2125" ph="DELETE FROM history_records... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/base.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="15" lean-forward="true" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="video.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/video.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="30" column="67" lean-forward="false" selection-start-line="30" selection-start-column="67" selection-end-line="30" selection-end-column="67" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="db.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="19" column="19" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-              <folding>
-                <marker date="1536499299328" expanded="true" signature="1082:1148" ph="INSERT INTO user... " />
+                <marker date="1536567575990" expanded="true" signature="482:570" ph="SELECT time " />
+                <marker date="1536567575990" expanded="true" signature="482:589" ph="SELECT time " />
+                <marker date="1536567575990" expanded="true" signature="1002:1042" ph="INSERT INTO history_records... " />
+                <marker date="1536567575990" expanded="true" signature="1002:1068" ph="INSERT INTO history_records... " />
+                <marker date="1536567575990" expanded="true" signature="1002:1092" ph="INSERT INTO history_records... " />
+                <marker date="1536567575990" expanded="true" signature="1002:1102" ph="INSERT INTO history_records... " />
+                <marker date="1536567575990" expanded="true" signature="1376:1680" ph="SELECT r.id,... user" />
+                <marker date="1536567575990" expanded="true" signature="2085:2125" ph="DELETE FROM history_records... " />
               </folding>
             </state>
           </provider>
@@ -146,10 +112,10 @@
         <option value="$PROJECT_DIR$/db.py" />
         <option value="$PROJECT_DIR$/camera.py" />
         <option value="$PROJECT_DIR$/templates/history_records.html" />
-        <option value="$PROJECT_DIR$/history_records.py" />
         <option value="$PROJECT_DIR$/templates/base.html" />
-        <option value="$PROJECT_DIR$/templates/video.html" />
+        <option value="$PROJECT_DIR$/history_records.py" />
         <option value="$PROJECT_DIR$/video.py" />
+        <option value="$PROJECT_DIR$/templates/video.html" />
       </list>
     </option>
   </component>
@@ -521,14 +487,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/criminal/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/auth/update_password.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -596,26 +554,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/camera.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="46" column="33" lean-forward="false" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#14#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="19" column="19" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-          <folding>
-            <marker date="1536499299328" expanded="true" signature="1082:1148" ph="INSERT INTO user... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/face_recognize.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1060">
@@ -627,9 +565,61 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/criminal/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="20" column="42" lean-forward="true" selection-start-line="18" selection-start-column="8" selection-end-line="20" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history_records.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="92" column="31" lean-forward="true" selection-start-line="92" selection-start-column="31" selection-end-line="92" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+            <marker date="1536567575990" expanded="true" signature="482:570" ph="SELECT time " />
+            <marker date="1536567575990" expanded="true" signature="482:589" ph="SELECT time " />
+            <marker date="1536567575990" expanded="true" signature="1002:1042" ph="INSERT INTO history_records... " />
+            <marker date="1536567575990" expanded="true" signature="1002:1068" ph="INSERT INTO history_records... " />
+            <marker date="1536567575990" expanded="true" signature="1002:1092" ph="INSERT INTO history_records... " />
+            <marker date="1536567575990" expanded="true" signature="1002:1102" ph="INSERT INTO history_records... " />
+            <marker date="1536567575990" expanded="true" signature="1376:1680" ph="SELECT r.id,... user" />
+            <marker date="1536567575990" expanded="true" signature="2085:2125" ph="DELETE FROM history_records... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/camera.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="77">
+          <caret line="41" column="30" lean-forward="false" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-470">
+          <caret line="19" column="19" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+          <folding>
+            <marker date="1536499299328" expanded="true" signature="1082:1148" ph="INSERT INTO user... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="6" lean-forward="true" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/auth.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
+        <state relative-caret-position="2029">
           <caret line="123" column="15" lean-forward="false" selection-start-line="123" selection-start-column="15" selection-end-line="123" selection-end-column="15" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
@@ -646,47 +636,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/video.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="30" column="67" lean-forward="false" selection-start-line="30" selection-start-column="67" selection-end-line="30" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="15" lean-forward="true" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/history_records.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1252">
-          <caret line="14" column="15" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-            <marker date="1536562171343" expanded="true" signature="482:570" ph="SELECT time " />
-            <marker date="1536562171343" expanded="true" signature="482:589" ph="SELECT time " />
-            <marker date="1536562171343" expanded="true" signature="1002:1042" ph="INSERT INTO history_records... " />
-            <marker date="1536562171343" expanded="true" signature="1002:1068" ph="INSERT INTO history_records... " />
-            <marker date="1536562171343" expanded="true" signature="1002:1092" ph="INSERT INTO history_records... " />
-            <marker date="1536562171343" expanded="true" signature="1002:1102" ph="INSERT INTO history_records... " />
-            <marker date="1536562171343" expanded="true" signature="1376:1680" ph="SELECT r.id,... user" />
-            <marker date="1536562171343" expanded="true" signature="2085:2125" ph="DELETE FROM history_records... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/video.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-90">
-          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+        <state relative-caret-position="266">
+          <caret line="24" column="63" lean-forward="false" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
           <folding>
             <element signature="e#22#115#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/video.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="26" column="85" lean-forward="false" selection-start-line="26" selection-start-column="85" selection-end-line="26" selection-end-column="85" />
+          <folding />
         </state>
       </provider>
     </entry>
