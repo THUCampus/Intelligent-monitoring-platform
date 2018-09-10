@@ -63,7 +63,7 @@ def manage():
 
 
 @bp.route('/<int:rank>/delete', methods=('POST','GET'))
-@login_required
+@manager_required
 def delete(rank):
     '''删除某个罪犯'''
     db = get_db()

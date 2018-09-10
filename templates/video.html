@@ -7,9 +7,9 @@
         <a class="action" href="{{url_for('auth.register')}}">注册新用户</a>
         <a class="action" href="{{url_for('criminal.register')}}">逃犯信息录入</a>
     {% endif%}
-    <a class="action" href="{{url_for('auth.update_password')}}">修改密码</a>
-    <a class="action" href="{{url_for('history_records.manage')}}">历史警示记录</a>
     <a class="action" href="{{url_for('criminal.manage')}}">查看所有的逃犯</a>
+    <a class="action" href="{{url_for('history_records.manage')}}">历史警示记录</a>
+    <a class="action" href="{{url_for('auth.update_password')}}">修改密码</a>
 {% endblock %}
 
 {% block content %}
@@ -53,9 +53,9 @@
         </form>
     {% endif %}
 
-    <img src="{{ url_for('video.video_feed') }}" width="900px">
+    <img src="{{ url_for('video.video_feed') }}" width="900px"> {# 视频流 #}
 
-    <h2>最新警示记录</h2>
+    <h2>最新警示记录</h2>{# 历史警示记录 #}
     <section id="newest_records"></section>
 
     <script type="text/javascript" src="{{url_for('static', filename='jquery.js')}}"></script>

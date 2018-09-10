@@ -2,9 +2,14 @@
 
 {% block header %}
   <h1>{% block title %}逃犯信息录入{% endblock %}</h1>
-  <a class="action" href="{{url_for('auth.manage')}}">管理页面</a>
-  <a class="action" href="{{url_for('auth.update_password')}}">修改密码</a>
-  <a class="action" href="{{url_for('video.video_html')}}">监控页面</a>
+    <a class="action" href="{{url_for('video.video_html')}}">监控页面</a>
+    {% if g.user and g.user['is_manager'] %}
+        <a class="action" href="{{url_for('auth.manage')}}">管理员界面</a>
+        <a class="action" href="{{url_for('auth.register')}}">注册新用户</a>
+    {% endif%}
+    <a class="action" href="{{url_for('criminal.manage')}}">查看所有的逃犯</a>
+    <a class="action" href="{{url_for('history_records.manage')}}">历史警示记录</a>
+    <a class="action" href="{{url_for('auth.update_password')}}">修改密码</a>
 {% endblock %}
 
 {% block content %}
