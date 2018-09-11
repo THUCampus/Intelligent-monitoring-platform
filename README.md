@@ -18,6 +18,8 @@
 - object_detection_model/中是与物体检测相关的模型。
 
 ## 部署说明
+- 由于现在所用模型较大，无法上传到github。所以点击链接下载后，将模型文件放入object_detection_model/文件夹中。链接如下：
+[yolov2.weights](https://cloud.tsinghua.edu.cn/f/38c409990a2f4bfb8d32/?dl=1)
 - 在目录Intelligent-monitoring-platform的上级目录打开命令行，输入
 ```angular2html
 export FLASK_APP=Intelligent-monitoring-platform
