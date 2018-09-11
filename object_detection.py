@@ -114,13 +114,17 @@ class object_detector:
 	根据分割情况对图像进行处理
 	param frame:图像
 	param objects_detected:operate_out函数返回的字典
+	param whether_track:判断是否为跟踪状态，从而改变label值。默认为False
 	'''
-	def operate_frame(self,frame,objects_detected):
+	def operate_frame(self,frame,objects_detected,whether_track=False):
 
 		for object_,info in objects_detected.items():
 			box=info[0]
 			confidence=info[1]
-			label='%s:%.2f'%(object_,confidence)
+			if not whether_track:
+				label='%s:%.2f'%(object_.split('_')[0],confidence)
+			else:
+				label='%s:%.2f'%(object_,confidence)
 			p1=(int(box[0]),int(box[1]))
 			p2=(int(box[0]+box[2]),int(box[1]+box[3]))
 			cv2.rectangle(frame,p1,p2,(0,255,0))
@@ -131,17 +135,23 @@ class object_detector:
 			cv2.rectangle(frame, (left, top - labelSize[1]), (left + labelSize[0], top + baseLine), (255, 255, 255), cv2.FILLED)
 			cv2.putText(frame, label, (left, top), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
-
-
+	'''
+	对图像处理的全过程
+	param frame:图像
+	param threshold:阈值，默认为0.6
+	'''
+	def detect(self,frame,threshold=0.6):
+		out=self.predict(frame)
+		objects_detected=self.operate_out(frame,out,threshold)
+		self.operate_frame(frame,objects_detected)
+		return frame
 
 if __name__=='__main__':
 	cap=cv2.VideoCapture(0)
 	object_predict=object_detector('object_detection_model/MobileNetSSD_deploy.caffemodel','object_detection_model/MobileNetSSD_deploy.prototxt','object_detection_model/MobileNet_classes.txt')
 	while(True):
 		_, img = cap.read()
-		out=object_predict.predict(img)
-		objects_detected=object_predict.operate_out(img,out,0.6)
-		object_predict.operate_frame(img,objects_detected)
+		self.detect(img,0.6)
 		cv2.imshow('test',img)
 		if cv2.waitKey(25) & 0xFF==ord('q'):
 			cv2.destroyAllWindows()

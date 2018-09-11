@@ -13,9 +13,9 @@ class Camera:
 
         #加入物体识别对象和物体追踪对象
         self.object_predictor=object_detection.object_detector(
-                'Intelligent-monitoring-platform/object_detection_model/MobileNetSSD_deploy.caffemodel',
-                'Intelligent-monitoring-platform/object_detection_model/MobileNetSSD_deploy.prototxt',
-                'Intelligent-monitoring-platform/object_detection_model/MobileNet_classes.txt')
+                'Intelligent-monitoring-platform/object_detection_model/yolov2.weights',
+                'Intelligent-monitoring-platform/object_detection_model/yolov2.cfg',
+                'Intelligent-monitoring-platform/object_detection_model/coco_classes.txt')
         self.object_tracker=object_tracking.object_tracker(self.object_predictor)
 
         self.face_recognize = face_recognize.face_recognize()
@@ -47,19 +47,13 @@ class Camera:
                 if criminal_id != "Unknown":
                     criminal_ids.append(criminal_id)
         elif 'object_detection' in process.keys():
-            img = self.object_detect(img) # 需要提供不同的painting方式
+            img = self.object_predictor.detect(img,0.6) # 需要提供不同的painting方式
         elif 'object_track' in process.keys():
             img=self.object_tracker.track(img)
         self._count = (self._count + 1) % (sys.maxsize/2)
 
         frame = cv2.imencode('.jpg', img)[1].tobytes()
         return frame,criminal_ids
-
-    def object_detect(self, image):
-        out=self.object_predictor.predict(image)
-        objects_detected=self.object_predictor.operate_out(image,out,0.6)
-        self.object_predictor.operate_frame(image,objects_detected)
-        return image
 
     def has_opened(self):
         '''判断摄像头是否正常工作'''
