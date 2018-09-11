@@ -1,6 +1,6 @@
 import cv2,sys
 from . import face_recognize
-from . import object_detection
+from . import object_detecting
 from . import object_tracking
 
 class Camera:
@@ -12,10 +12,7 @@ class Camera:
         self._count = 0
 
         #加入物体识别对象和物体追踪对象
-        self.object_predictor=object_detection.object_detector(
-                'Intelligent-monitoring-platform/object_detection_model/yolov2.weights',
-                'Intelligent-monitoring-platform/object_detection_model/yolov2.cfg',
-                'Intelligent-monitoring-platform/object_detection_model/coco_classes.txt')
+        self.object_predictor=object_detecting.object_detector()
         self.object_tracker=object_tracking.object_tracker(self.object_predictor)
 
         self.face_recognize = face_recognize.face_recognize()
@@ -47,7 +44,9 @@ class Camera:
                 if criminal_id != "Unknown":
                     criminal_ids.append(criminal_id)
         elif 'object_detection' in process.keys():
-            img = self.object_predictor.detect(img,0.6) # 需要提供不同的painting方式
+            self.object_predictor.operate_frame(img,
+                self.object_predictor.object_detect(img,0.6))
+
         elif 'object_track' in process.keys():
             img=self.object_tracker.track(img)
         self._count = (self._count + 1) % (sys.maxsize/2)

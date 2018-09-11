@@ -4,7 +4,7 @@
 import cv2,argparse,sys,imutils,copy
 import numpy as np
 from copy import deepcopy
-from .object_detection import object_detector
+from .object_detecting import object_detector
 
 class object_tracker:
 
@@ -25,8 +25,7 @@ class object_tracker:
 	param threshold:阈值
 	'''
 	def preprocess(self,frame,threshold):
-		out=self.predictor.predict(frame)
-		objects_detected=self.predictor.operate_out(frame,out,threshold)
+		objects_detected=self.predictor.object_detect(frame,threshold)
 
 		objects_list=list(objects_detected.keys())
 
@@ -70,8 +69,7 @@ class object_tracker:
 	return frame:处理之后的图片
 	'''
 	def add_new_object(self,frame,threshold):
-		out=self.predictor.predict(frame)
-		objects_detected=self.predictor.operate_out(frame,out,threshold)
+		objects_detected=self.predictor.object_detect(frame,threshold)
 		if(len(objects_detected)<=len(self.objects_detected)):
 			#不加入新物体
 			return
