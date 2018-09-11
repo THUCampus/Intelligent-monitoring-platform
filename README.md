@@ -1,7 +1,7 @@
 # Intelligent monitoring platform
 
 ## 代码功能说明
-- 网站服务采用了Flask开源框架，templates和static中分别存放了网页模板文件和静态文件。
+网站服务采用了Flask开源框架，templates和static中分别存放了网页模板文件和静态文件。
 - camera.py 中的Camera类实现从IP地址或者本地读取网络摄像头。
 - db.py 中提供了数据库的创建、销毁、获取等操作。
 - schema.sql 实现数据表的创建。
@@ -17,16 +17,19 @@
 - object_detection/中是与物体检测相关的各种库与模型。
 
 ## 部署说明
-- 在目录Intelligent-monitoring-platform的上级目录打开命令行，输入
+- Mac或者Linux系统下，在目录Intelligent-monitoring-platform的上级目录打开命令行，输入
 ```angular2html
 export FLASK_APP=Intelligent-monitoring-platform
 export FLASK_ENV=development
 flask init-db
 ```
-进行数据库的初始化，随后可以在上级目录中看到一个新的文件夹instance,其中存放了数据库内容。
-- 然后输入
+进行数据库的初始化，随后可以在Intelligent-monitoring-platform的同级目录中出现新的文件夹instance,其中存放了数据库内容。
+然后输入
 ```angular2html
 flask run
 ```
 打开服务器，然后在网页输入localhost:5000/即可进入登录界面。
 初始时数据库中有一个管理员用户，用户名为Boss, 密码为123456。
+
+## 第三方库说明
+我们用到的python第三方库包括flask,werkzeug,cv2,face_recognition,click,pickle,blinker,json,numpy,tensorflow,matplotlib
