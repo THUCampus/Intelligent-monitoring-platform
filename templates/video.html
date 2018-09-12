@@ -81,11 +81,17 @@
         {
           var screen_div = document.getElementById("screen_div");
           var screen = document.getElementById("screen");
+          var canvas = document.getElementById("canvas");
+          var box_info = document.getElementById("box_info");
 
           screen_div.style.width=screen.offsetWidth.toString()+'px';
           screen_div.style.height=screen.offsetHeight.toString()+'px';
           screen_div.style.left=screen.offsetLeft.toString()+'px';
           screen_div.style.top=screen.offsetTop.toString()+'px';
+
+          var context = canvas.getContext('2d');
+          context.strokeStyle = "#0f0";
+          context.lineWidth = 5;
 
           screen_div.onmousedown = function (event)
           {
@@ -96,7 +102,12 @@
               {
                   var endX = event.clientX - screen_div.getBoundingClientRect().left;
                   var endY = event.clientY - screen_div.getBoundingClientRect().top;
-                  document.getElementById("box").value=startX.toString()+'_'+startY.toString()+'_'+(endX-startX).toString()+'_'+(endY-startY).toString()
+                  document.getElementById("box").value=startX.toString()+'_'+startY.toString()+'_'+(endX-startX).toString()+'_'+(endY-startY).toString();
+
+                  context.clearRect(0,0,canvas.width,canvas.height);
+                  context.beginPath();
+                  context.strokeRect(startX,startY,(endX-startX),(endY-startY));
+                  box_info.innerHTML='From ('+startX.toString()+','+startY.toString()+') to ('+endX.toString()+','+endY.toString()+')'
               }
 
               document.onmouseup = function (event)
@@ -108,9 +119,11 @@
           }
         }
       </script>
+      <p id="box_info">请选择矩形区域...</p>
       {% endif %}
       <div>
-        <div id="screen_div" style="background:#fff;opacity:0;z-index:1;position:absolute;"></div>
+        <div id="screen_div" style="background:#fff;opacity:0;z-index:2;position:absolute;"></div>
+        <canvas id="canvas" style="position:absolute;z-index:1;" width="900px" height="675px"></canvas>
         <img src="{{ url_for('video.video_feed') }}" style="z-index:0;" width="900px" id="screen">
       </div>
 
