@@ -17,6 +17,8 @@ class object_tracker:
 		self.objects_detected=dict()
 		#刷新频率
 		self.freq=0
+		#记录区域内的物体
+		self.items_label=[]
 
 	'''
 	对追踪器进行初始化，加入KCF跟踪器
@@ -134,7 +136,8 @@ class object_tracker:
 	param frame：图像
 	param box_selection:选择的监视区域，默认为[0,0,0,0]
 	param threshold:阈值,默认为0.35
-	return frame:处理之后的图片
+	return frame，enter_items_label，leave_items_label:
+		处理之后的图片，进入监测区域中的物体，离开监测区域的物体
 	'''
 	def track(self,frame,box_selection=[0,0,0,0],threshold=0.35):
 		if len(self.trackers)==0:#进行初始化操作
@@ -160,14 +163,23 @@ class object_tracker:
 			self.add_new_object(frame,threshold)
 
 		#检测是否有物体进入指定区域
+		enter_items_label=[]
+		leave_items_label=[]
 		if box_selection != [0,0,0,0]:
 			p1=(int(box_selection[0]),int(box_selection[1]))
 			p2=(int(box_selection[0]+box_selection[2]),int(box_selection[1]+box_selection[3]))
 			cv2.rectangle(frame,p1,p2,(0,255,0),3)
 			for label in self.objects_detected.keys():
-				#print(self.coincide(self.objects_detected[label][0],box_selection))
 				if self.coincide(self.objects_detected[label][0],box_selection)>0.01:
 					print (label.split('_')[0]+label.split('_')[1]+' enters this area')
+					enter_items_label.append(label)
+			#和之前的记录对比
+			for label in self.items_label:
+				if label not in enter_items_label:
+					leave_items_label.append(label)
+			self.items_label=enter_items_label
+
+
 
 		if len(self.objects_detected)>0:
 			self.predictor.operate_frame(frame,self.objects_detected,whether_track=True)
@@ -176,7 +188,7 @@ class object_tracker:
 			cv2.putText(frame, 'No objects to be tracked!', (50,80), cv2.FONT_HERSHEY_SIMPLEX, 0.75,(0,0,255),2)
 			self.objects_detected=self.preprocess(frame,threshold)
 
-		return frame
+		return frame,enter_items_label,leave_items_label
 
 
 if __name__=='__main__':

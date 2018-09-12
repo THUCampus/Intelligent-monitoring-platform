@@ -97,17 +97,22 @@
           {
               var startX = event.clientX - screen_div.getBoundingClientRect().left;
               var startY = event.clientY - screen_div.getBoundingClientRect().top;
+              startX=Math.round(startX);
+              startY=Math.round(startY);
 
               document.onmousemove = function (event)
               {
                   var endX = event.clientX - screen_div.getBoundingClientRect().left;
                   var endY = event.clientY - screen_div.getBoundingClientRect().top;
+
+                  endX=Math.round(endX);
+                  endY=Math.round(endY);
+                  box_info.innerHTML='From ('+startX.toString()+','+startY.toString()+') to ('+endX.toString()+','+endY.toString()+')'
                   document.getElementById("box").value=startX.toString()+'_'+startY.toString()+'_'+(endX-startX).toString()+'_'+(endY-startY).toString();
 
                   context.clearRect(0,0,canvas.width,canvas.height);
                   context.beginPath();
                   context.strokeRect(startX,startY,(endX-startX),(endY-startY));
-                  box_info.innerHTML='From ('+startX.toString()+','+startY.toString()+') to ('+endX.toString()+','+endY.toString()+')'
               }
 
               document.onmouseup = function (event)
@@ -131,8 +136,9 @@
     {# 警示记录 #}
     <h2>最新警示记录</h2>
     <section id="newest_records"></section>
-
     <script type="text/javascript" src="{{url_for('static', filename='jquery.js')}}"></script>
+
+    {% if task == "face_recognition" %}
     <script type="text/javascript">
         var source = new EventSource("{{ url_for('video.records_feed')}}");
         source.onmessage = function (event) {
@@ -151,4 +157,25 @@
             }
         }
     </script>
+    {% elif task == "object_track"  %}
+    <script type="text/javascript">
+        var source = new EventSource("{{ url_for('video.records_feed')}}");
+        source.onmessage = function (event) {
+            var records = jQuery.parseJSON(event.data);
+            document.getElementById("newest_records").innerHTML = ""
+            for(var i =0; i<records.length; i++){
+                document.getElementById("newest_records").innerHTML += "" +
+                    "<article class='post'>" +
+                        "<header>" +
+                            "<div>" +
+                                "<h1>" + records[i].item + "("+records[i].item_id+")"+
+                                    "-- enterTime:"+records[i].enter_time+"  leaveTime:"+records[i].leave_time+
+                                    "  cameraID:"+records[i].camera_id+"</h1>"+
+                            "</div>"+
+                        "</header>"+
+                    "</article>"
+            }
+        }
+    </script>
+    {% endif %}
 {% endblock %}

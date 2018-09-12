@@ -5,9 +5,9 @@ from flask import (
 import time
 from .camera import Camera
 from .auth import login_required
-from .history_records import produce_record, get_history_records
 from .db import get_db_by_config,get_db
-from .history_records import RecordsGenerator
+from . import history_records
+from . import intruding_records
 
 bp = Blueprint('video', __name__)
 
@@ -29,6 +29,7 @@ def video_html():
     if request.method == 'POST':
         if request.form['form_type'] == 'box_selection':
             box_selection=[int(x)*32/45 for x in request.form['box_selection'].split('_')]
+            records_feed()
         elif request.form['form_type'] == "ip":
             session['ip']=request.form['ip']
             session['camera_id'] = request.form['camera_id']
@@ -45,11 +46,17 @@ def gen(camera,config,user_id, camera_id,process,interval):
     '''camera视频生成器'''
     while True:
         time.sleep(0.01) # 每个0.01s推送一帧视频
-        frame, criminal_ids = camera.get_frame(process=process)
+        frame, criminal_ids,enter_items_label,leave_items_label = camera.get_frame(process=process)
+        db = get_db_by_config(config)
         for criminal_id in criminal_ids:
-            db = get_db_by_config(config)
-            produce_record(db, criminal_id=criminal_id, user_id=user_id,
+            history_records.produce_record(db, criminal_id=criminal_id, user_id=user_id,
                            camera_id=camera_id,interval=interval)
+
+        for enter_item in enter_items_label:
+            intruding_records.produce_record(db,item=enter_item.split('_')[0],item_id=int(enter_item.split('_')[1]),
+                            user_id=user_id,camera_id=camera_id)
+        for leave_item in leave_items_label:
+            intruding_records.add_leave_time(db,item=leave_item.split('_')[0],item_id=int(leave_item.split('_')[1]))
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
@@ -72,5 +79,10 @@ def video_feed():
 def records_feed():
     '''返回监控界面的警示记录部分'''
     user_id = session.get("user_id")
-    return Response(RecordsGenerator(user_id=user_id,db_config=current_app.config['DATABASE']),
+    task=session.get('task')
+    if task=='face_recognition':
+        return Response(history_records.RecordsGenerator(user_id=user_id,db_config=current_app.config['DATABASE']),
+                    mimetype='text/event-stream')
+    elif task=='object_track':
+        return Response(intruding_records.RecordsGenerator(user_id=user_id,db_config=current_app.config['DATABASE']),
                     mimetype='text/event-stream')
