@@ -48,7 +48,7 @@ class Camera:
                 self.object_predictor.object_detect(img,0.6))
 
         elif 'object_track' in process.keys():
-            img=self.object_tracker.track(img)
+            img=self.object_tracker.track(img,box_selection=process['box'],threshold=0.6)
         self._count = (self._count + 1) % (sys.maxsize/2)
 
         frame = cv2.imencode('.jpg', img)[1].tobytes()

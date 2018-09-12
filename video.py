@@ -11,6 +11,10 @@ from .history_records import RecordsGenerator
 
 bp = Blueprint('video', __name__)
 
+'''
+一些需要全局使用的变量
+'''
+box_selection=[0,0,0,0]
 
 @bp.route('/', methods=('GET', 'POST'))
 @login_required
@@ -20,8 +24,12 @@ def video_html():
     session.setdefault('camera_id', '0')
     session.setdefault('task', "face_recognition")
     session.setdefault('interval', 5)
+    global box_selection
+    box_selection=[0,0,0,0]
     if request.method == 'POST':
-        if request.form['form_type'] == "ip":
+        if request.form['form_type'] == 'box_selection':
+            box_selection=[int(x)*32/45 for x in request.form['box_selection'].split('_')]
+        elif request.form['form_type'] == "ip":
             session['ip']=request.form['ip']
             session['camera_id'] = request.form['camera_id']
         elif request.form['form_type'] == 'task':
@@ -50,7 +58,7 @@ def gen(camera,config,user_id, camera_id,process,interval):
 def video_feed():
     '''返回监控界面中的视频部分'''
     camera = Camera(ip=session.get('ip'))
-    process = {session.get('task'):1}#获取图像的处理方式
+    process = {session.get('task'):1,'box':box_selection}#获取图像的处理方式
     user_id = session.get('user_id')
     if not camera.has_opened():#如果打开失败
         session['ip'] = "0"

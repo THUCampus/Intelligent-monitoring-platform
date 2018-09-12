@@ -34,7 +34,7 @@
                       {% if task == "object_detection" %}checked {% endif %}
                       onclick="choose_task()"/>目标识别
         </label>
-		
+
 		<label>
             <input type="radio" name="task" value="object_track"
                       {% if task == "object_track" %}checked {% endif %}
@@ -71,7 +71,49 @@
     {% endif %}
 
     {# 视频流 #}
-    <img src="{{ url_for('video.video_feed') }}" width="900px">
+    {% if task == "object_track" %}
+      <form method="post" id="box_selection">
+          <input type="hidden" name="form_type" value="box_selection">
+          <input type="hidden" name="box_selection" value= "0_0_0_0" id="box">
+      </form>
+      <script type="text/javascript">
+        window.onload=function()
+        {
+          var screen_div = document.getElementById("screen_div");
+          var screen = document.getElementById("screen");
+
+          screen_div.style.width=screen.offsetWidth.toString()+'px';
+          screen_div.style.height=screen.offsetHeight.toString()+'px';
+          screen_div.style.left=screen.offsetLeft.toString()+'px';
+          screen_div.style.top=screen.offsetTop.toString()+'px';
+
+          screen_div.onmousedown = function (event)
+          {
+              var startX = event.clientX - screen_div.getBoundingClientRect().left;
+              var startY = event.clientY - screen_div.getBoundingClientRect().top;
+
+              document.onmousemove = function (event)
+              {
+                  var endX = event.clientX - screen_div.getBoundingClientRect().left;
+                  var endY = event.clientY - screen_div.getBoundingClientRect().top;
+                  document.getElementById("box").value=startX.toString()+'_'+startY.toString()+'_'+(endX-startX).toString()+'_'+(endY-startY).toString()
+              }
+
+              document.onmouseup = function (event)
+              {
+                  document.getElementById("box_selection").submit();
+                  document.onmousemove = null;
+                  document.onmouseup = null;
+              }
+          }
+        }
+      </script>
+      {% endif %}
+      <div>
+        <div id="screen_div" style="background:#fff;opacity:0;z-index:1;position:absolute;"></div>
+        <img src="{{ url_for('video.video_feed') }}" style="z-index:0;" width="900px" id="screen">
+      </div>
+
 
     {# 警示记录 #}
     <h2>最新警示记录</h2>

@@ -18,7 +18,6 @@ class object_tracker:
 		#刷新频率
 		self.freq=0
 
-
 	'''
 	对追踪器进行初始化，加入KCF跟踪器
 	param frame：图像
@@ -133,10 +132,11 @@ class object_tracker:
 	'''
 	对每一帧中的物体进行追踪
 	param frame：图像
+	param box_selection:选择的监视区域，默认为[0,0,0,0]
 	param threshold:阈值,默认为0.35
 	return frame:处理之后的图片
 	'''
-	def track(self,frame,threshold=0.35):
+	def track(self,frame,box_selection=[0,0,0,0],threshold=0.35):
 		if len(self.trackers)==0:#进行初始化操作
 			self.objects_detected=self.preprocess(frame,threshold)
 
@@ -158,6 +158,16 @@ class object_tracker:
 		if(self.freq>=10):
 			self.freq=0
 			self.add_new_object(frame,threshold)
+
+		#检测是否有物体进入指定区域
+		if box_selection != [0,0,0,0]:
+			p1=(int(box_selection[0]),int(box_selection[1]))
+			p2=(int(box_selection[0]+box_selection[2]),int(box_selection[1]+box_selection[3]))
+			cv2.rectangle(frame,p1,p2,(0,255,0),3)
+			for label in self.objects_detected.keys():
+				#print(self.coincide(self.objects_detected[label][0],box_selection))
+				if self.coincide(self.objects_detected[label][0],box_selection)>0.01:
+					print (label.split('_')[0]+label.split('_')[1]+' enters this area')
 
 		if len(self.objects_detected)>0:
 			self.predictor.operate_frame(frame,self.objects_detected,whether_track=True)
