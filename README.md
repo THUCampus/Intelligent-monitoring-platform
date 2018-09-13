@@ -11,8 +11,9 @@
 - object_tracking.py中实现了用第三方库进行物体追踪的功能。
 - face_recognize.py 实现对给定图像进行人脸识别（搜索罪犯）。
 - criminal.py 提供了逃犯信息的录入、删除和查看。
-- history_records.py 提供了嫌犯识别历史警示记录的生成、获取、删除；通过信号机制连接数据库，通过生成器向前端推送警示信息。
-- intruding_records.py 提供了物体进入选择区域警示记录的生成、获取、删除；通过信号机制连接数据库，通过生成器向前端推送警示信息。
+- history_records.py 提供了嫌犯识别历史警示记录的生成、获取；通过信号机制连接数据库，通过生成器向前端推送警示信息。
+- intruding_records.py 提供了物体进入选择区域警示记录的生成、获取；通过信号机制连接数据库，通过生成器向前端推送警示信息。
+- records_management.py 提供了两种记录的删除操作。
 - templates/中，base.html为基础界面，video.html为监控视频展示界面，history_records.html为完整的历史警示记录界面。
 - templates/auth/中，login.html登录页面，manage.html管理界面，register.html注册界面，update_password.html修改密码界面
 - templates/criminal/中，manage.html为逃犯的管理界面，register.html为逃犯信息录入界面
