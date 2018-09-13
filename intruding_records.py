@@ -10,7 +10,6 @@ import _thread
 
 records_updated_signal = signal("update records")#警示记录发生更新的信号
 
-bp = Blueprint('intruding_records', __name__, url_prefix='/intruding_records')
 
 def produce_record(db,item,item_id,user_id,camera_id):
     '''
@@ -73,24 +72,6 @@ def get_instruding_records(db,user_id):
     )
     return records
 
-@bp.route('/manage', methods=('GET', 'POST'))
-@login_required
-def manage():
-    '''返回历史警示记录界面'''
-    user_id = session.get('user_id')
-    db = get_db()
-    return render_template('intruding_records.html', records=get_instruding_records(db, user_id))
-
-
-@bp.route('/<int:id>/delete', methods=('GET', 'POST'))
-@login_required
-def delete(id):
-    '''删除某条历史记录'''
-    db = get_db()
-    db.execute('DELETE FROM intruding_records WHERE id = ?', (id,))
-    db.commit()
-    return redirect(url_for('intruding_records.manage'))
-
 def _create_json_response(records):
     '''将records进行json序列化'''
     new_records = []
@@ -108,11 +89,16 @@ def _create_json_response(records):
 
 class RecordsGenerator:
     '''物体进入记录生成器'''
-    def __init__(self, user_id, db_config):
+    def __init__(self, user_id, db_config,whether_update=False):
         self.user_id = user_id
         self.db_config = db_config
         records_updated_signal.connect(self.on_records_update)
         self.lock = _thread.allocate_lock()
+        if whether_update:
+            #清空表数据
+            db = get_db_by_config(config=self.db_config)
+            db.execute('DELETE FROM intruding_records')
+            db.commit()
 
     def on_records_update(self, user_id):
         '''当物体进入记录更新时'''

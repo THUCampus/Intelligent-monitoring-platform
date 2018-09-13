@@ -10,9 +10,6 @@ import _thread
 
 records_updated_signal = signal("update records")#警示记录发生更新的信号
 
-bp = Blueprint('history_records', __name__, url_prefix='/history_records')
-
-
 def produce_record(db, criminal_id, user_id, camera_id, interval):
     '''
     生成一条警示记录
@@ -52,26 +49,6 @@ def get_history_records(db, user_id):
         (user_id,)
     )
     return records
-
-
-@bp.route('/manage', methods=('GET', 'POST'))
-@login_required
-def manage():
-    '''返回历史警示记录界面'''
-    user_id = session.get('user_id')
-    db = get_db()
-    return render_template('history_records.html', records=get_history_records(db, user_id))
-
-
-@bp.route('/<int:id>/delete', methods=('GET', 'POST'))
-@login_required
-def delete(id):
-    '''删除某条历史记录'''
-    db = get_db()
-    db.execute('DELETE FROM history_records WHERE id = ?', (id,))
-    db.commit()
-    return redirect(url_for('history_records.manage'))
-
 
 def _create_json_response(records):
     '''将records进行json序列化'''

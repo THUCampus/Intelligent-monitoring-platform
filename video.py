@@ -15,6 +15,7 @@ bp = Blueprint('video', __name__)
 一些需要全局使用的变量
 '''
 box_selection=[0,0,0,0]
+old_box_selection=[0,0,0,0]
 
 @bp.route('/', methods=('GET', 'POST'))
 @login_required
@@ -24,12 +25,14 @@ def video_html():
     session.setdefault('camera_id', '0')
     session.setdefault('task', "face_recognition")
     session.setdefault('interval', 5)
-    global box_selection
-    box_selection=[0,0,0,0]
+    global box_selection,old_box_selection
+    box_selection=old_box_selection
     if request.method == 'POST':
         if request.form['form_type'] == 'box_selection':
             box_selection=[int(x)*32/45 for x in request.form['box_selection'].split('_')]
-            records_feed()
+            whether_update=not (box_selection==old_box_selection)
+            old_box_selection=box_selection
+            records_feed(whether_update)
         elif request.form['form_type'] == "ip":
             session['ip']=request.form['ip']
             session['camera_id'] = request.form['camera_id']
@@ -76,7 +79,7 @@ def video_feed():
 
 
 @bp.route('/records_feed')
-def records_feed():
+def records_feed(whether_update=False):
     '''返回监控界面的警示记录部分'''
     user_id = session.get("user_id")
     task=session.get('task')
@@ -84,5 +87,5 @@ def records_feed():
         return Response(history_records.RecordsGenerator(user_id=user_id,db_config=current_app.config['DATABASE']),
                     mimetype='text/event-stream')
     elif task=='object_track':
-        return Response(intruding_records.RecordsGenerator(user_id=user_id,db_config=current_app.config['DATABASE']),
+        return Response(intruding_records.RecordsGenerator(user_id=user_id,db_config=current_app.config['DATABASE'],whether_update=whether_update),
                     mimetype='text/event-stream')

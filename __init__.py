@@ -40,8 +40,8 @@ def create_app(test_config = None):
     from . import criminal
     app.register_blueprint(criminal.bp)
 
-    from . import history_records
-    app.register_blueprint(history_records.bp)
+    from . import records_management
+    app.register_blueprint(records_management.bp)
     #
     # from . import camera
     # app.register_blueprint(camera.bp)
