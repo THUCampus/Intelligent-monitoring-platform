@@ -1,181 +1,205 @@
 {% extends 'base.html' %}
 
-{% block header %}
-    <h1>{% block title %}监控界面{% endblock %}</h1>
-    {% if g.user and g.user['is_manager'] %}
-        <a class="action" href="{{url_for('auth.manage')}}">管理员界面</a>
-        <a class="action" href="{{url_for('auth.register')}}">注册新用户</a>
-        <a class="action" href="{{url_for('criminal.register')}}">逃犯信息录入</a>
-    {% endif%}
-    <a class="action" href="{{url_for('criminal.manage')}}">查看所有的逃犯</a>
-    <a class="action" href="{{url_for('records.manage')}}">历史警示记录</a>
-    <a class="action" href="{{url_for('auth.update_password')}}">修改密码</a>
-{% endblock %}
-
 {% block content %}
 
-    {# 提交ip信息 #}
-    <form method="post">
-        <input type="hidden" name="form_type" value="ip">
-        <label>IP</label>
-        <input name="ip" value={{ ip }} required>
-        <label>Camera ID</label>
-        <input name="camera_id" value={{ camera_id }}>
-        <input type="submit" value="提交">
-    </form>
-
-    {# 提交task类别信息 #}
-    <form method="post" id="task">
-        <input type="hidden" name="form_type" value="task">
-        <label>识别任务</label>
-
-        <label>
-            <input type="radio" name="task" value="object_detection"
-                      {% if task == "object_detection" %}checked {% endif %}
-                      onclick="choose_task()"/>目标识别
-        </label>
-
-		<label>
-            <input type="radio" name="task" value="object_track"
-                      {% if task == "object_track" %}checked {% endif %}
-                      onclick="choose_task()"/>物体追踪
-        </label>
-
-        <label>
-            <input type="radio" name="task" value="face_recognition"
-                      {% if task == "face_recognition" %}checked {% endif %}
-                      onclick="choose_task()"/>人脸识别（罪犯追踪）
-        </label>
-
-        <label>
-            <input type="radio" name="task" value="nothing"
-                      {% if task == "nothing" %}checked {% endif %}
-                      onclick="choose_task()"/>无
-        </label>
-    </form>
-
-    <script>
-        function choose_task() {
-            document.getElementById("task").submit();
-        }
-    </script>
-
-    {# 提交interval信息 #}
-    {% if task == "face_recognition" %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+      {# 提交ip信息 #}
+      <br>
+      <center>
         <form method="post">
-            <input type="hidden" name="form_type" value="interval">
-            <label>消息推送的时间间隔/min</label>
-            <input name="interval" value={{ interval }} required>
-            <input type="submit" value="提交">
+          <input type="hidden" name="form_type" value="ip">
+          <div class="input-group" style="width:400px;">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-pushpin"></span> IP地址</span>
+            <input type="text" class="form-control" placeholder="IP地址" name="ip" value={{ ip }} required>
+          </div><br>
+          <div class="input-group" style="width:400px;">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-camera"></span> 相机ID</span>
+            <input type="text" class="form-control" placeholder="相机ID" name="camera_id" value={{ camera_id }}>
+          </div><br>
+          <button type="submit" class="btn btn-primary" style="width:200px;">提交</button>
         </form>
-    {% endif %}
+        <br>
 
-    {# 视频流 #}
-    {% if task == "object_track" %}
-      <form method="post" id="box_selection">
-          <input type="hidden" name="form_type" value="box_selection">
-          <input type="hidden" name="box_selection" value= "0_0_0_0" id="box">
-      </form>
-      <script type="text/javascript">
-        window.onload=function()
-        {
-          var screen_div = document.getElementById("screen_div");
-          var screen = document.getElementById("screen");
-          var canvas = document.getElementById("canvas");
-          var box_info = document.getElementById("box_info");
+        {# 提交task类别信息 #}
+        <form method="post" id="task">
+            <input type="hidden" name="form_type" value="task">
+            <input type="hidden"  id="choose_task" name="task" value="face_recognition">
+            <div class="btn-group">
+              <button type="button" id="select_button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="width:200px;">
+                {% if task == "object_detection" %}
+                  目标识别
+                {% elif task == "object_track" %}
+                  物体追踪
+                {% elif task == "face_recognition" %}
+                  人脸识别（罪犯追踪）
+                {% endif %}
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="javascript:void(0);" onclick="choose_object_detection()">目标识别</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" onclick="choose_object_track()">物体追踪</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" onclick="choose_face_recognition()">人脸识别（罪犯追踪）</a>
+                </li>
+              </ul>
+            </div>
+          </form>
+          <br>
 
-          screen_div.style.width=screen.offsetWidth.toString()+'px';
-          screen_div.style.height=screen.offsetHeight.toString()+'px';
-          screen_div.style.left=screen.offsetLeft.toString()+'px';
-          screen_div.style.top=screen.offsetTop.toString()+'px';
-
-          var context = canvas.getContext('2d');
-          context.strokeStyle = "#0f0";
-          context.lineWidth = 5;
-
-          screen_div.onmousedown = function (event)
-          {
-              var startX = event.clientX - screen_div.getBoundingClientRect().left;
-              var startY = event.clientY - screen_div.getBoundingClientRect().top;
-              startX=Math.round(startX);
-              startY=Math.round(startY);
-
-              document.onmousemove = function (event)
-              {
-                  var endX = event.clientX - screen_div.getBoundingClientRect().left;
-                  var endY = event.clientY - screen_div.getBoundingClientRect().top;
-
-                  endX=Math.round(endX);
-                  endY=Math.round(endY);
-                  box_info.innerHTML='From ('+startX.toString()+','+startY.toString()+') to ('+endX.toString()+','+endY.toString()+')'
-                  document.getElementById("box").value=startX.toString()+'_'+startY.toString()+'_'+(endX-startX).toString()+'_'+(endY-startY).toString();
-
-                  context.clearRect(0,0,canvas.width,canvas.height);
-                  context.beginPath();
-                  context.strokeRect(startX,startY,(endX-startX),(endY-startY));
+          <script>
+              function choose_object_detection() {
+                document.getElementById("choose_task").value="object_detection";
+                document.getElementById("task").submit();
               }
-
-              document.onmouseup = function (event)
-              {
-                  document.getElementById("box_selection").submit();
-                  document.onmousemove = null;
-                  document.onmouseup = null;
+              function choose_object_track() {
+                document.getElementById("choose_task").value="object_track";
+                document.getElementById("task").submit();
               }
-          }
-        }
-      </script>
-      <p id="box_info">请选择矩形区域...</p>
-      {% endif %}
-      <div>
-        <div id="screen_div" style="background:#fff;opacity:0;z-index:2;position:absolute;"></div>
-        <canvas id="canvas" style="position:absolute;z-index:1;" width="900px" height="675px"></canvas>
-        <img src="{{ url_for('video.video_feed') }}" style="z-index:0;" width="900px" id="screen">
+              function choose_face_recognition() {
+                document.getElementById("choose_task").value="face_recognition";
+                document.getElementById("task").submit();
+              }
+          </script>
+
+          {# 提交interval信息 #}
+          {% if task == "face_recognition" %}
+          <form class="form-inline" role="form" method="post">
+            <input type="hidden" name="form_type" value="interval">
+            <div class="form-group">
+              <div class="input-group" style="width:200px;">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span> 时间间隔</span>
+                <input type="text" class="form-control" placeholder=">消息推送的时间间隔/min" name="interval" value={{ interval }} required>
+              </div>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary" style="width:50px;display:inline-block;">提交</button>
+            </div>
+          </form>
+          <br>
+          {% endif %}
+
+          {# 视频流 #}
+          {% if task == "object_track" %}
+            <form method="post" id="box_selection">
+                <input type="hidden" name="form_type" value="box_selection">
+                <input type="hidden" name="box_selection" value= "0_0_0_0" id="box">
+            </form>
+            <script type="text/javascript">
+              window.onload=function()
+              {
+                var screen_div = document.getElementById("screen_div");
+                var screen = document.getElementById("screen");
+                var canvas = document.getElementById("canvas");
+                var box_info = document.getElementById("box_info");
+
+                screen_div.style.width=screen.offsetWidth.toString()+'px';
+                screen_div.style.height=screen.offsetHeight.toString()+'px';
+                screen_div.style.left=screen.offsetLeft.toString()+'px';
+                screen_div.style.top=screen.offsetTop.toString()+'px';
+
+                var context = canvas.getContext('2d');
+                context.strokeStyle = "#0f0";
+                context.lineWidth = 5;
+
+                screen_div.onmousedown = function (event)
+                {
+                    var startX = event.clientX - screen_div.getBoundingClientRect().left;
+                    var startY = event.clientY - screen_div.getBoundingClientRect().top;
+                    startX=Math.round(startX);
+                    startY=Math.round(startY);
+
+                    document.onmousemove = function (event)
+                    {
+                        var endX = event.clientX - screen_div.getBoundingClientRect().left;
+                        var endY = event.clientY - screen_div.getBoundingClientRect().top;
+
+                        endX=Math.round(endX);
+                        endY=Math.round(endY);
+                        box_info.innerHTML='From ('+startX.toString()+','+startY.toString()+') to ('+endX.toString()+','+endY.toString()+')'
+                        document.getElementById("box").value=startX.toString()+'_'+startY.toString()+'_'+(endX-startX).toString()+'_'+(endY-startY).toString();
+
+                        context.clearRect(0,0,canvas.width,canvas.height);
+                        context.beginPath();
+                        context.strokeRect(startX,startY,(endX-startX),(endY-startY));
+                    }
+
+                    document.onmouseup = function (event)
+                    {
+                        document.getElementById("box_selection").submit();
+                        document.onmousemove = null;
+                        document.onmouseup = null;
+                    }
+                }
+              }
+            </script>
+
+            <p id="box_info">请用鼠标在视频中选择矩形检测区域...</p>
+            {% endif %}
+            <div>
+              <div id="screen_div" style="background:#fff;opacity:0;z-index:2;position:absolute;"></div>
+              <canvas id="canvas" style="position:absolute;z-index:1;" width="900px" height="675px"></canvas>
+              <img src="{{ url_for('video.video_feed') }}" style="z-index:0;" width="900px" id="screen">
+            </div>
+
+        </center>
       </div>
 
+      <div class="col-sm-4">
+        <center>
+          {# 警示记录 #}
+          <h2>最新警示记录</h2><br>
+          <section id="newest_records"></section>
 
-    {# 警示记录 #}
-    <h2>最新警示记录</h2>
-    <section id="newest_records"></section>
-    <script type="text/javascript" src="{{url_for('static', filename='jquery.js')}}"></script>
+          {% if task == "face_recognition" %}
+          <script type="text/javascript">
+              var source = new EventSource("{{ url_for('video.records_feed')}}");
+              source.onmessage = function (event) {
+                  var records = jQuery.parseJSON(event.data);
+                  document.getElementById("newest_records").innerHTML = ""
+                  for(var i =0; i<records.length; i++){
+                      document.getElementById("newest_records").innerHTML += "" +
+                          "<article class='post'>" +
+                              "<header>" +
+                                  "<div>" +
+                                      "<h3>" + records[i].criminal_name + "("+records[i].criminal_id+")"+
+                                          "在时刻"+records[i].time+"出现在了摄像头"+records[i].camera_id+"</h3>"+
+                                  "</div>"+
+                              "</header>"+
+                          "</article>"
+                  }
+              }
+          </script>
+          {% elif task == "object_track"  %}
+          <script type="text/javascript">
+              var source = new EventSource("{{ url_for('video.records_feed')}}");
+              source.onmessage = function (event) {
+                  var records = jQuery.parseJSON(event.data);
+                  document.getElementById("newest_records").innerHTML = ""
+                  for(var i =0; i<records.length; i++){
+                      document.getElementById("newest_records").innerHTML += "" +
+                          "<article class='post'>" +
+                              "<header>" +
+                                  "<div>" +
+                                      "<h3>" + records[i].item + "("+records[i].item_id+")"+
+                                          "-- enterTime:"+records[i].enter_time+"  leaveTime:"+records[i].leave_time+
+                                          "  cameraID:"+records[i].camera_id+"</h3>"+
+                                  "</div>"+
+                              "</header>"+
+                          "</article>"
+                  }
+              }
+          </script>
+          {% endif %}
+        </center>
+      </div>
 
-    {% if task == "face_recognition" %}
-    <script type="text/javascript">
-        var source = new EventSource("{{ url_for('video.records_feed')}}");
-        source.onmessage = function (event) {
-            var records = jQuery.parseJSON(event.data);
-            document.getElementById("newest_records").innerHTML = ""
-            for(var i =0; i<records.length; i++){
-                document.getElementById("newest_records").innerHTML += "" +
-                    "<article class='post'>" +
-                        "<header>" +
-                            "<div>" +
-                                "<h1>" + records[i].criminal_name + "("+records[i].criminal_id+")"+
-                                    "在时刻"+records[i].time+"出现在了摄像头"+records[i].camera_id+"</h1>"+
-                            "</div>"+
-                        "</header>"+
-                    "</article>"
-            }
-        }
-    </script>
-    {% elif task == "object_track"  %}
-    <script type="text/javascript">
-        var source = new EventSource("{{ url_for('video.records_feed')}}");
-        source.onmessage = function (event) {
-            var records = jQuery.parseJSON(event.data);
-            document.getElementById("newest_records").innerHTML = ""
-            for(var i =0; i<records.length; i++){
-                document.getElementById("newest_records").innerHTML += "" +
-                    "<article class='post'>" +
-                        "<header>" +
-                            "<div>" +
-                                "<h1>" + records[i].item + "("+records[i].item_id+")"+
-                                    "-- enterTime:"+records[i].enter_time+"  leaveTime:"+records[i].leave_time+
-                                    "  cameraID:"+records[i].camera_id+"</h1>"+
-                            "</div>"+
-                        "</header>"+
-                    "</article>"
-            }
-        }
-    </script>
-    {% endif %}
+  </div>
+</div>
+
 {% endblock %}

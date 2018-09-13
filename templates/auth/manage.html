@@ -1,33 +1,29 @@
 {% extends 'base.html' %}
 
-{% block header %}
-    <h1>{% block title %}管理员界面{% endblock %}</h1>
-    <a class="action" href="{{url_for('video.video_html')}}">监控页面</a>
-    {% if g.user and g.user['is_manager'] %}
-        <a class="action" href="{{url_for('auth.register')}}">注册新用户</a>
-        <a class="action" href="{{url_for('criminal.register')}}">逃犯信息录入</a>
-    {% endif%}
-    <a class="action" href="{{url_for('criminal.manage')}}">查看所有的逃犯</a>
-    <a class="action" href="{{url_for('records.manage')}}">历史警示记录</a>
-    <a class="action" href="{{url_for('auth.update_password')}}">修改密码</a>
-{% endblock %}
-
 {% block content %}
-    {% for user in users %}
-        <article class="post">
-            <header>
-                <div>
-                    <h1>{{user['username']}}</h1>
-                    <div class="about">
-                        {% if user['is_manager'] %}
-                            管理员
-                        {% endif %}
-                    </div>
-                </div>
-                <form action="{{ url_for('auth.delete', id=user['id']) }}" method="post">
-                    <input class="danger" type="submit" value="删除" onclick="return confirm('你确定吗?');">
-                </form>
-            </header>
-        </article>
-    {% endfor %}
+<br>
+<br>
+<center>
+  <div class="panel panel-info" style="width:600px;">
+    <div class="panel-heading">
+      <h3 class="panel-title">用户信息记录</h3>
+    </div>
+    <div class="panel-body">
+      <ul class="list-group">
+        {% for user in users %}
+          <li class="list-group-item">
+        {% if user['is_manager'] %}
+          <span class="badge">管理员</span>
+        {% endif %}
+          <h2>{{user['username']}}</h2><br>
+          <form action="{{ url_for('auth.delete', id=user['id']) }}" method="post">
+            <button type="submit" class="btn btn-primary" style="width:100px;" onclick="return confirm('你确定吗?');">删除</button>
+          </form>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</center>
+
 {% endblock %}

@@ -1,24 +1,89 @@
 <!DOCTYPE html>
-<title>{% block title %}{% endblock %}-智能监控系统</title>
-<link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<nav>
-    <h1>智能监控系统</h1>
-    <ul>
-        {% if g.user %}
-            <li><span>{{g.user['username']}}</span></li>
-            <li><a href="{{url_for('auth.logout')}}">登出</a> </li>
-        {% else %}
-            <li><a href="{{url_for('auth.login')}}">登录</a></li>
-        {% endif %}
-    </ul>
-</nav>
-<section class="content">
-  <header>
-    {% block header %}{% endblock %}
-  </header>
-  {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
-  {% block content %}{% endblock %}
-</section>
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <style type="text/css">
+    body{
+      font-family: 'Lucida Grande','Trebuchet MS','Hiragino Sans GB','Segoe UI Light','Segoe UI','Microsoft Jhenghei','微软雅黑',sans-serif;
+      -webkit-font-smoothing: antialiased;
+      color: #666666;
+    }
+    .title{
+      font-size: 60px;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="jumbotron">
+    <div class="container">
+      <div class="title">智能监控系统</div>
+    </div>
+    <nav style="text-align: right;margin-right: 100px;">
+            {% if g.user %}
+            <ul class="nav navbar-nav navbar-right">
+                <li><a style="font-size:20px;"><span class="glyphicon glyphicon-user"></span> {{g.user['username']}}</a></li>
+                <li><a style="font-size:20px;" href="{{url_for('auth.logout')}}"><span class="glyphicon glyphicon-log-in"></span> 登出</a></li>
+            </ul>
+            {% else %}
+              <a style="font-size:20px;" href="{{url_for('auth.login')}}"><span class="glyphicon glyphicon-log-in"></span> 登录</a>
+            {% endif %}
+    </nav>
+    <br>
+  </div>
+
+  <ul class="nav nav-tabs">
+    <li>
+      <a href="{{url_for('video.video_html')}}" style="font-size:20px;">监控页面</a></li>
+    <li>
+      <a href="{{url_for('records.manage')}}" style="font-size:20px;">历史警示记录查看</a></li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="font-size:20px;">
+        用户信息操作
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <a href="{{url_for('auth.register')}}" style="font-size:20px;">用户注册</a></li>
+        <li>
+          <a href="{{url_for('auth.update_password')}}" style="font-size:20px;">密码修改</a></li>
+        <li class="divider"></li>
+        <li>
+          <a href="{{url_for('auth.manage')}}" style="font-size:20px;">管理员界面</a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="font-size:20px;">
+        罪犯信息操作
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <a href="{{url_for('criminal.register')}}" style="font-size:20px;">罪犯信息录入</a></li>
+        <li>
+          <a href="{{url_for('criminal.manage')}}" style="font-size:20px;">查看所有罪犯</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <section class="content">
+
+    {% for message in get_flashed_messages() %}
+      <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+          &times;
+        </button>
+        {{ message }}
+      </div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+  </section>
+</body>
+</html>

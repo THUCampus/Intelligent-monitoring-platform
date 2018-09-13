@@ -1,79 +1,59 @@
 {% extends 'base.html' %}
 
-{% block header %}
-    <h1>{% block title %}历史警示记录{% endblock %}</h1>
-    <a class="action" href="{{url_for('video.video_html')}}">监控页面</a>
-    {% if g.user and g.user['is_manager'] %}
-        <a class="action" href="{{url_for('auth.manage')}}">管理员界面</a>
-        <a class="action" href="{{url_for('auth.register')}}">注册新用户</a>
-        <a class="action" href="{{url_for('criminal.register')}}">逃犯信息录入</a>
-    {% endif%}
-    <a class="action" href="{{url_for('criminal.manage')}}">查看所有的逃犯</a>
-    <a class="action" href="{{url_for('auth.update_password')}}">修改密码</a>
-{% endblock %}
-
 {% block content %}
-
+<br>
 {# 提交task类别信息 #}
 <form method="post" id="task">
-    <input type="hidden" name="form_type" value="task">
-    <label>历史记录类型</label>
-
-    <label>
-        <input type="radio" name="task" value="object_track"
-                  {% if task == "object_track" %}checked {% endif %}
-                  onclick="choose_task()"/>物体追踪记录
-    </label>
-
-    <label>
-        <input type="radio" name="task" value="face_recognition"
-                  {% if task == "face_recognition" %}checked {% endif %}
-                  onclick="choose_task()"/>罪犯识别记录
-    </label>
+    <input type="hidden" name="task" id="choose_task" value="face_recognition">
+    <ul class="nav nav-pills">
+      <li {% if task == "object_track" %} class = "active" {% else %} class = "" {% endif %}><a href="javascript:void(0);" onclick="choose_object_track()" >物体追踪记录</a></li>
+      <li {% if task == "face_recognition" %} class = "active" {% else %} class = "" {% endif %}><a href="javascript:void(0);" onclick="choose_face_recognition()" >罪犯识别记录</a></li>
+    </ul>
 </form>
 
 <script>
-    function choose_task() {
-        document.getElementById("task").submit();
+    function choose_object_track() {
+      document.getElementById("choose_task").setAttribute("value", "object_track");
+      document.getElementById("task").submit();
+    }
+    function choose_face_recognition() {
+      document.getElementById("choose_task").value="face_recognition";
+      document.getElementById("task").submit();
     }
 </script>
 
 {% if task == "face_recognition" %}
-  {% for record in records %}
-      <article class="post">
-          <header>
-              <div>
-                  <h1>{{record['criminal_name']}}({{ record['criminal_id'] }})
-                      在时刻{{ record['time'] }}出现在了摄像头{{ record['camera_id'] }}</h1>
-                  <div class="about">
-                      {% if record['criminal_important'] %}
-                          A级逃犯
-                      {% endif %}
-                  </div>
-              </div>
-              <form action="{{ url_for('records.delete', id=record['id']) }}" method="post">
-                  <input class="danger" type="submit" value="删除" onclick="return confirm('你确定要删除这条记录吗?');">
-              </form>
-          </header>
-      </article>
-  {% endfor %}
+  <ul class="list-group">
+    {% for record in records %}
+      <li class="list-group-item">
+    {% if record['criminal_important'] %}
+      <span class="badge">A级逃犯</span>
+    {% endif %}
+      <h3>{{record['criminal_name']}}({{ record['criminal_id'] }})
+          在时刻{{ record['time'] }}出现在了摄像头{{ record['camera_id'] }}</h3><br>
+      <form action="{{ url_for('records.delete', id=record['id']) }}" method="post">
+        <button type="submit" class="btn btn-primary" style="width:100px;" onclick="return confirm('你确定要删除这条记录吗?');">删除</button>
+      </form>
+      </li>
+    {% endfor %}
+  </ul>
 {% elif task == "object_track" %}
-  {% for record in records %}
-      <article class="post">
-          <header>
-              <div>
-                  <h1>{{record['item']}}({{ record['item_id'] }})--&nbsp;
-                      enterTime:{{record['enter_time']}}&nbsp;
-                      leaveTime:{{record['leave_time']}}&nbsp;
-                      cameraID:{{record['camera_id']}}&nbsp;
-                  </h1>
-              </div>
-              <form action="{{ url_for('records.delete', id=record['id']) }}" method="post">
-                  <input class="danger" type="submit" value="删除" onclick="return confirm('你确定要删除这条记录吗?');">
-              </form>
-          </header>
-      </article>
-  {% endfor %}
+  <ul class="list-group">
+    {% for record in records %}
+      <li class="list-group-item">
+    {% if record['criminal_important'] %}
+      <span class="badge">A级逃犯</span>
+    {% endif %}
+      <h3>{{record['item']}}({{ record['item_id'] }})--
+          enterTime:{{record['enter_time']}}&nbsp;
+          leaveTime:{{record['leave_time']}}&nbsp;
+          cameraID:{{record['camera_id']}}&nbsp;</h3><br>
+      <form action="{{ url_for('records.delete', id=record['id']) }}" method="post">
+        <button type="submit" class="btn btn-primary" style="width:100px;" onclick="return confirm('你确定要删除这条记录吗?');">删除</button>
+      </form>
+      </li>
+    {% endfor %}
+  </ul>
 {% endif %}
 
 {% endblock %}

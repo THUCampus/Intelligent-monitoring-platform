@@ -13,8 +13,8 @@ def manage():
     '''返回历史警示记录界面'''
     session.setdefault('task', "face_recognition")
     if request.method == 'POST':
-        if request.form['form_type'] == 'task':
-            session['task'] = request.form['task']
+        session['task'] = request.form['task']
+        print(session['task'])
     user_id = session.get('user_id')
     db = get_db()
     if session.get('task') == "face_recognition":

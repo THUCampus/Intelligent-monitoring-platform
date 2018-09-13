@@ -1,15 +1,83 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-{% block header %}
-  <h1>{% block title %}登录界面{% endblock %}</h1>
-{% endblock %}
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-{% block content %}
-  <form method="post">
-    <label for="username">用户名</label>
-    <input name="username" id="username" required>
-    <label for="password">密码</label>
-    <input type="password" name="password" id="password" required>
-    <input type="submit" value="Log In">
-  </form>
-{% endblock %}
+    <style type="text/css">
+    body{
+        font-family: 'Lucida Grande','Trebuchet MS','Hiragino Sans GB','Segoe UI Light','Segoe UI','Microsoft Jhenghei','微软雅黑',sans-serif;
+        -webkit-font-smoothing: antialiased;
+        color: #666666;
+    }
+    .title{
+        font-size: 60px;
+        text-align: center;
+        margin-top: 80px;
+    }
+    .subtitle{
+        margin-top: 50px;
+        text-align: center;
+        line-height: 2em;
+		    font-size: 14px;
+    }
+    .login{
+        width: 400px;
+        height: 280px;
+        margin: 50px auto 0;
+        overflow: hidden;
+    }
+
+    .copyright{
+        text-align: center;
+        margin-top: 50px;
+        font-size: 12px;
+        font-family: tahoma;
+    }
+
+    </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">智能监控系统</div>
+      <div class="subtitle">
+        <div>更全面更先进的视觉体验</div>
+      </div>
+      <br><br>
+
+      <center>
+        <div class="panel panel-info" style="width:600px;">
+          <div class="panel-heading">
+            <center><h3 class="panel-title">用户登录</h3></center>
+          </div>
+          <div class="panel-body">
+            <center>
+              <div>
+                <form method="post">
+                  <div class="input-group" style="width:300px;">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span> 用户</span>
+                    <input type="text" class="form-control" placeholder="用户名" name="username" id="username" required>
+                  </div><br>
+                  <div class="input-group" style="width:300px;">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-eye-close"></span> 密码</span>
+                    <input type="password" class="form-control" placeholder="密码" name="password" id="password" required>
+                  </div><br><br>
+                  <button type="submit" class="btn btn-primary" style="width:200px;">立即体验</button>
+                </form>
+              </div>
+            </center>
+          </div>
+        </div>
+      </center>
+
+      <br><br>
+
+      <div class="copyright"> © Made by Junguang Jiang and Jialiang Cheng. </div>
+    </div>
+
+</body>
+</html>

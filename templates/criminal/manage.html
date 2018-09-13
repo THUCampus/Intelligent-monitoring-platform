@@ -1,37 +1,33 @@
 {% extends 'base.html' %}
 
-{% block header %}
-    <h1>{% block title %}逃犯管理界面{% endblock %}</h1>
-    <a class="action" href="{{url_for('video.video_html')}}">监控页面</a>
-    {% if g.user and g.user['is_manager'] %}
-        <a class="action" href="{{url_for('auth.manage')}}">管理员界面</a>
-        <a class="action" href="{{url_for('auth.register')}}">注册新用户</a>
-        <a class="action" href="{{url_for('criminal.register')}}">逃犯信息录入</a>
-    {% endif%}
-    <a class="action" href="{{url_for('records.manage')}}">历史警示记录</a>
-    <a class="action" href="{{url_for('auth.update_password')}}">修改密码</a>
-{% endblock %}
-
 {% block content %}
-    {% for criminal in criminals %}
-        <article class="post">
-            <header>
-                <div>
-                    <h1>{{criminal['name']}}({{ criminal['id'] }})</h1>
-                    <div class="about">
-                        {% if criminal['important'] %}
-                            A级
-                        {% else %}
-                            B级
-                        {% endif %}
-                    </div>
-                </div>
-                {% if g.user and g.user['is_manager'] %}
-                    <form action="{{ url_for('criminal.delete', rank=criminal['rank']) }}" method="post">
-                        <input class="danger" type="submit" value="删除" onclick="return confirm('你确定吗?');">
-                    </form>
-                {% endif %}
-            </header>
-        </article>
-    {% endfor %}
+<br>
+<br>
+<center>
+  <div class="panel panel-info" style="width:600px;">
+    <div class="panel-heading">
+      <h3 class="panel-title">罪犯信息记录</h3>
+    </div>
+    <div class="panel-body">
+      <ul class="list-group">
+        {% for criminal in criminals %}
+          <li class="list-group-item">
+        {% if criminal['important'] %}
+          <span class="badge">A级</span>
+        {% else %}
+          <span class="badge">B级</span>
+        {% endif %}
+          <h2>{{criminal['name']}}({{ criminal['id'] }})</h2><br>
+        {% if g.user and g.user['is_manager'] %}
+          <form action="{{ url_for('criminal.delete', rank=criminal['rank']) }}" method="post">
+            <button type="submit" class="btn btn-primary" style="width:100px;" onclick="return confirm('你确定吗?');">删除</button>
+          </form>
+        {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</center>
+
 {% endblock %}
