@@ -45,7 +45,7 @@ def register():
                 (name, id, encoding, important)
             )
             db.commit()
-            return redirect(url_for('auth.manage'))
+            return redirect(url_for('criminal.manage'))
 
         flash(error)
     return render_template('criminal/register.html')

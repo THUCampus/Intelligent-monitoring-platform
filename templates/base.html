@@ -51,12 +51,14 @@
       </a>
       <ul class="dropdown-menu">
         <li>
-          <a href="{{url_for('auth.register')}}" style="font-size:20px;">用户注册</a></li>
-        <li>
           <a href="{{url_for('auth.update_password')}}" style="font-size:20px;">密码修改</a></li>
+        {% if g.user['is_manager']==True %}
         <li class="divider"></li>
         <li>
+          <a href="{{url_for('auth.register')}}" style="font-size:20px;">用户注册</a></li>
+        <li>
           <a href="{{url_for('auth.manage')}}" style="font-size:20px;">管理员界面</a></li>
+        {% endif %}
       </ul>
     </li>
     <li class="dropdown">
@@ -66,9 +68,12 @@
       </a>
       <ul class="dropdown-menu">
         <li>
-          <a href="{{url_for('criminal.register')}}" style="font-size:20px;">罪犯信息录入</a></li>
-        <li>
           <a href="{{url_for('criminal.manage')}}" style="font-size:20px;">查看所有罪犯</a></li>
+        {% if g.user['is_manager']==True %}
+        <li class="divider"></li>
+        <li>
+          <a href="{{url_for('criminal.register')}}" style="font-size:20px;">罪犯信息录入</a></li>
+        {% endif %}
       </ul>
     </li>
   </ul>

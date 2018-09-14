@@ -25,6 +25,10 @@ def manage():
         return render_template('records.html',
                 records=intruding_records.get_instruding_records(db, user_id),
                 task=session.get("task"))
+    else:#默认为罪犯追踪
+        return render_template('records.html',
+                records=history_records.get_history_records(db, user_id),
+                task="face_recognition")
 
 
 
