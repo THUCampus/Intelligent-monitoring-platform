@@ -138,9 +138,44 @@
                 }
               }
             </script>
-
-            <p id="box_info">请用鼠标在视频中选择矩形检测区域...</p>
             {% endif %}
+
+            {% if task == "object_detection" or  task == "object_track" %}
+            <form method="post" id="threshold_submit">
+                <input type="hidden" name="form_type" value="threshold_select">
+                <input type="hidden" name="threshold_select" value= "0.6" id="threshold_select">
+            </form>
+            <style>
+              #slider .slider-selection {
+                background: #BABABA;
+              }
+            </style>
+            <br>
+            <h4>
+              <span class="label label-info">阈值</span>
+              <input  id="threshold" data-slider-id="slider" type="text"
+                data-slider-min="0" data-slider-max="1" data-slider-step="0.01"
+                data-slider-value="{{ threshold }}"/>
+            </h4>
+            <script type="text/javascript">
+            $('#threshold').slider({
+              formatter: function (value)
+              {
+                return 'Current threshold: ' + value;
+              }}).on('slideStop', function (e)
+              {
+                document.getElementById("threshold_select").value=e.value;
+                document.getElementById("threshold_submit").submit();
+              });
+            </script>
+            {% endif %}
+
+            {% if task == "object_track" %}
+            <h3>
+              <span class="label label-success" id="box_info">请用鼠标在视频中选择矩形检测区域...</span>
+            </h3>
+            {% endif %}
+
             <div>
               <div id="screen_div" style="background:#fff;opacity:0;z-index:2;position:absolute;"></div>
               <canvas id="canvas" style="position:absolute;z-index:1;" width="900px" height="675px"></canvas>

@@ -25,6 +25,7 @@ def video_html():
     session.setdefault('camera_id', '0')
     session.setdefault('task', "face_recognition")
     session.setdefault('interval', 5)
+    session.setdefault('threshold',0.6)
     global box_selection,old_box_selection
     box_selection=old_box_selection
     if request.method == 'POST':
@@ -42,9 +43,13 @@ def video_html():
             session['task'] = request.form['task']
         elif request.form['form_type'] == 'interval':
             session['interval'] = request.form['interval']
+        elif request.form['form_type'] == 'threshold_select':
+            session['threshold'] = request.form['threshold_select']
+
     return render_template('video.html',
                            ip=session.get("ip"), camera_id = session.get("camera_id"),
-                           task=session.get('task'), interval=session.get('interval'))
+                           task=session.get('task'), interval=session.get('interval'),
+                           threshold=session.get('threshold'))
 
 
 def gen(camera,config,user_id, camera_id,process,interval):
@@ -70,8 +75,9 @@ def gen(camera,config,user_id, camera_id,process,interval):
 def video_feed():
     '''返回监控界面中的视频部分'''
     camera = Camera(ip=session.get('ip'))
-    process = {session.get('task'):1,'box':box_selection}#获取图像的处理方式
     user_id = session.get('user_id')
+    threshold=float(session.get('threshold'))
+    process = {session.get('task'):1,'box':box_selection,'threshold':threshold}#获取图像的处理方式
     if not camera.has_opened():#如果打开失败
         session['ip'] = "0"
         camera = Camera("0")

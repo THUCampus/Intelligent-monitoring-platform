@@ -47,10 +47,10 @@ class Camera:
                     criminal_ids.append(criminal_id)
         elif 'object_detection' in process.keys():
             self.object_predictor.operate_frame(img,
-                self.object_predictor.object_detect(img,0.6))
+                self.object_predictor.object_detect(img,process['threshold']))
 
         elif 'object_track' in process.keys():
-            img,enter_items_label,leave_items_label=self.object_tracker.track(img,box_selection=process['box'],threshold=0.6)
+            img,enter_items_label,leave_items_label=self.object_tracker.track(img,box_selection=process['box'],threshold=process['threshold'])
         self._count = (self._count + 1) % (sys.maxsize/2)
 
         frame = cv2.imencode('.jpg', img)[1].tobytes()
