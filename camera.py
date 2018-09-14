@@ -38,6 +38,8 @@ class Camera:
         criminal_ids = []
         enter_items_label=[]#进入指定区域的物体标签名
         leave_items_label=[]#离开指定区域的物体标签名
+        width=img.shape[1]
+        height=img.shape[0]
         if 'face_recognition' in process.keys():
             img = self.face_recognize.face_recognize(
                 img, repainting=(self._count % process['face_recognition'] == 0)
@@ -54,7 +56,7 @@ class Camera:
         self._count = (self._count + 1) % (sys.maxsize/2)
 
         frame = cv2.imencode('.jpg', img)[1].tobytes()
-        return frame,criminal_ids,enter_items_label,leave_items_label
+        return frame,criminal_ids,enter_items_label,leave_items_label,width,height
 
     def has_opened(self):
         '''判断摄像头是否正常工作'''

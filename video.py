@@ -16,6 +16,8 @@ bp = Blueprint('video', __name__)
 '''
 box_selection=[0,0,0,0]
 old_box_selection=[0,0,0,0]
+image_width=1
+image_height=1
 
 @bp.route('/', methods=('GET', 'POST'))
 @login_required
@@ -30,7 +32,7 @@ def video_html():
     box_selection=old_box_selection
     if request.method == 'POST':
         if request.form['form_type'] == 'box_selection':
-            box_selection=[int(x)*32/45 for x in request.form['box_selection'].split('_')]
+            box_selection=[int(int(x)*image_width/900) for x in request.form['box_selection'].split('_')]
             whether_update=False
             if ((box_selection==[0,0,0,0]) or (not (box_selection==old_box_selection))):
                 whether_update=True
@@ -54,9 +56,11 @@ def video_html():
 
 def gen(camera,config,user_id, camera_id,process,interval):
     '''camera视频生成器'''
+    global image_width
+    global image_height
     while True:
         time.sleep(0.01) # 每个0.01s推送一帧视频
-        frame, criminal_ids,enter_items_label,leave_items_label = camera.get_frame(process=process)
+        frame, criminal_ids,enter_items_label,leave_items_label,image_width,image_height = camera.get_frame(process=process)
         db = get_db_by_config(config)
         for criminal_id in criminal_ids:
             history_records.produce_record(db, criminal_id=criminal_id, user_id=user_id,
