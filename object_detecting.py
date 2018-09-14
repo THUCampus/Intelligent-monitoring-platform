@@ -152,13 +152,13 @@ class object_detector:
                 label='%s:%.2f'%(object_,confidence)
             p1=(int(box[0]),int(box[1]))
             p2=(int(box[0]+box[2]),int(box[1]+box[3]))
-            cv2.rectangle(frame,p1,p2,(0,0,255))
+            cv2.rectangle(frame,p1,p2,(255,0,0),2)
             left=int(box[0])
             top=int(box[1])
             labelSize,baseLine=cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 1)
             top=max(top,labelSize[1])
-            cv2.rectangle(frame, (left, top - labelSize[1]), (left + labelSize[0], top + baseLine), (255, 255, 255), cv2.FILLED)
-            cv2.putText(frame, label, (left, top), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
+            cv2.rectangle(frame, (left, top - labelSize[1]-baseLine), (left + labelSize[0], top), (255, 0, 0), cv2.FILLED)
+            cv2.putText(frame, label, (left, top-baseLine), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255),1)
 
 
 if __name__=='__main__':

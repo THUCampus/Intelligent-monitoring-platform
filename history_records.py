@@ -77,7 +77,8 @@ class RecordsGenerator:
     def on_records_update(self, user_id):
         '''当历史警示记录更新时'''
         if user_id == self.user_id:
-            self.lock.release()
+            if self.lock.locked():
+                self.lock.release()
 
     def __iter__(self):
         while True:

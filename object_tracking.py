@@ -171,7 +171,6 @@ class object_tracker:
 			cv2.rectangle(frame,p1,p2,(0,255,0),3)
 			for label in self.objects_detected.keys():
 				if self.coincide(self.objects_detected[label][0],box_selection)>0.01:
-					print (label.split('_')[0]+label.split('_')[1]+' enters this area')
 					enter_items_label.append(label)
 			#和之前的记录对比
 			for label in self.items_label:

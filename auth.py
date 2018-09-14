@@ -22,9 +22,9 @@ def login():
         ).fetchone()
 
         if user is None:
-            error = '错误的用户名.'
+            error = '错误的用户名!'
         elif not check_password_hash(user['password'], password):
-            error = '错误的密码.'
+            error = '错误的密码!'
 
         if error is None:
             session.clear()
@@ -91,13 +91,13 @@ def register():
         error = None
 
         if not username:
-            error = 'Username is required.'
+            error = 'Username is required!'
         elif not password:
-            error = 'Password is required.'
+            error = 'Password is required!'
         elif db.execute(
                 'SELECT id FROM user WHERE username = ?', (username,)
         ).fetchone() is not None:
-            error = 'User {} is already registered.'.format(username)
+            error = 'User {} is already registered!'.format(username)
 
         if error is None:
             db.execute(
@@ -146,16 +146,16 @@ def update_password():
         error = None
 
         if not username:
-            error = '请填入用户名.'
+            error = '请填入用户名!'
         else:
             user = db.execute(
                 'SELECT id, password FROM user WHERE username = ?', (username,)
             ).fetchone()
 
             if user is None:
-                error = '用户{}不存在'.format(username)
+                error = '用户{}不存在!'.format(username)
             elif not check_password_hash(user['password'], old_password):
-                error = "密码错误"
+                error = "密码错误!"
 
         if error is None:
             db.execute(

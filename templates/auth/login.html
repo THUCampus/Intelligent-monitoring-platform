@@ -56,6 +56,14 @@
           </div>
           <div class="panel-body">
             <center>
+              {% for message in get_flashed_messages() %}
+                <div class="alert alert-danger alert-dismissable">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                    &times;
+                  </button>
+                  {{ message }}
+                </div>
+              {% endfor %}
               <div>
                 <form method="post">
                   <div class="input-group" style="width:300px;">
