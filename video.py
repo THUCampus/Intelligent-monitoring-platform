@@ -30,7 +30,9 @@ def video_html():
     if request.method == 'POST':
         if request.form['form_type'] == 'box_selection':
             box_selection=[int(x)*32/45 for x in request.form['box_selection'].split('_')]
-            whether_update=not (box_selection==old_box_selection)
+            whether_update=False
+            if ((box_selection==[0,0,0,0]) or (not (box_selection==old_box_selection))):
+                whether_update=True
             old_box_selection=box_selection
             records_feed(whether_update)
         elif request.form['form_type'] == "ip":
