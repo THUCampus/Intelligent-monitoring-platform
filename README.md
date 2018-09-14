@@ -38,5 +38,4 @@ flask run
 我们用到的python第三方库包括flask,werkzeug,cv2,face_recognition,click,pickle,blinker,json,numpy,tensorflow,matplotlib，opencv-contrib-python
 
 ## 目前发现的一些bug
-- 在目标识别下点击历史警示记录会出现错误页面
-- 普通用户不应该访问到用户注册，管理员界面，罪犯信息录入这三个页面的按钮
+- 物体追踪情况下锁的release可能会出错，还在找原因。。
