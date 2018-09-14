@@ -35,4 +35,9 @@ flask run
 初始时数据库中有一个管理员用户，用户名为Boss, 密码为123456。
 
 ## 第三方库说明
-我们用到的python第三方库包括flask,werkzeug,cv2,face_recognition,click,pickle,blinker,json,numpy,tensorflow,matplotlib
+我们用到的python第三方库包括flask,werkzeug,cv2,face_recognition,click,pickle,blinker,json,numpy,tensorflow,matplotlib，opencv-contrib-python
+
+## 目前发现的一些bug
+- 在目标识别下点击历史警示记录会出现错误页面
+- 在输入完罪犯信息后跳转到了用户管理界面，应该跳转到罪犯信息管理界面
+- 普通用户不应该访问到用户注册，管理员界面，罪犯信息录入这三个页面的按钮

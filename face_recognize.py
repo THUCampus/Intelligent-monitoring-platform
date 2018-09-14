@@ -23,7 +23,7 @@ class face_recognize:
             self.face_ids = []
             self.face_important = []
             for face_encoding in self.face_encodings:
-                matches = face_recognition.compare_faces(self.known_face_encodings, face_encoding, tolerance=0.5)
+                matches = face_recognition.compare_faces(self.known_face_encodings, face_encoding, tolerance=0.4)
                 id = "Unknown"
                 important = "C"
                 if True in matches:
