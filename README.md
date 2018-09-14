@@ -38,4 +38,3 @@ flask run
 我们用到的python第三方库包括flask,werkzeug,cv2,face_recognition,click,pickle,blinker,json,numpy,tensorflow,matplotlib，opencv-contrib-python
 
 ## 目前发现的一些bug
-- 物体追踪情况下锁的release可能会出错，还在找原因。。
