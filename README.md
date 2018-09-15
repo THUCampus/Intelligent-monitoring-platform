@@ -1,6 +1,5 @@
-## 作者：
-## 江俊广    程嘉梁
-说明文档的网页版（格式更美观）见 [https://shimo.im/docs/leUrk3mHdygyweDS](https://shimo.im/docs/leUrk3mHdygyweDS)
+## 作者：江俊广（JunguangJiang） 程嘉梁（JL-Cheng）
+说明文档的网页版（格式更美观）见 [文档说明](https://shimo.im/docs/leUrk3mHdygyweDS)
 # 代码架构
 我们的智能监控平台的网站服务基于**Flask**开源框架，图像识别与信息提取功能则基于**cv2**和**tensorflow**等一系列相关的第三方库，具体的代码结构如下所示：
 ## python文件
@@ -148,59 +147,59 @@ flask run
 * 维护者：Olli-Pekka Heinisuo、skvark
 * 协议：MIT License (MIT)
 * 开源
-* 使用到的功能：图片处理
+* 使用到的功能：图片处理<br>
 * imutils
 * 作者：Adrian RoseBrock
 * 协议：MIT License (MIT)
 * 开源
-* 使用到的功能：简单的图片处理
+* 使用到的功能：简单的图片处理<br>
 * numpy
 * 作者：Travis E. Oliphant et al.
 * 协议：OSI Approved (BSD)
 * 开源
-* 使用到的功能：各种数学运算
+* 使用到的功能：各种数学运算<br>
 * opencv-contrib-python
 * 维护者：Olli-Pekka Heinisuo、skvark
 * 协议：MIT License (MIT)
 * 开源
-* 使用到的功能：opencv中的物体追踪器
+* 使用到的功能：opencv中的物体追踪器<br>
 * six
 * 作者：Benjamin Peterson
 * 协议：MIT License (MIT)
 * 开源（托管在Bitbucket上）
-* 使用到的功能：兼容python2和python3的库
+* 使用到的功能：兼容python2和python3的库<br>
 * tensorflow
 * 作者：Google
 * 协议：Apache Software License (Apache 2.0)
 * 开源
-* 使用到的功能：对于深度学习模型的使用
+* 使用到的功能：对于深度学习模型的使用<br>
 * matplotlib
 * 作者：John D. Hunter, Michael Droettboom
 * 协议：Python Software Foundation License (BSD)
 * 开源
-* 使用到的功能：图片处理与绘制操作
+* 使用到的功能：图片处理与绘制操作<br>
 * flask,werkzeug
 * 作者：Armin Ronacher, Pallets team
 * 协议：BSD
 * 开源
-* 使用到的功能：网站服务的搭建
+* 使用到的功能：网站服务的搭建<br>
 * face_recognition
 * 作者：Adam Geitgey
 * 协议：MIT License (MIT)
 * 开源
-* 使用到的功能：人类识别
+* 使用到的功能：人脸识别<br>
 * click
 * 作者：Armin Ronacher
 * 协议：BSD
 * 开源
-* 使用到的功能：命令行包装器
+* 使用到的功能：命令行包装器<br>
 * pickle
 * 作者：Antoine Pitrou
 * 协议：Python Software Foundation License
 * 开源
-* 使用到的功能：数据对象的持久化
+* 使用到的功能：数据对象的持久化<br>
 * blinker
 * 作者：Jason Kirtland
 * 协议：MIT License (MIT)
 * 开源
-* 使用到的功能：实现信号机制（警示记录发生更新时发出信号）
+* 使用到的功能：实现信号机制（警示记录发生更新时发出信号）<br>
