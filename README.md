@@ -144,62 +144,62 @@ flask run
 4. 将记录生成器作为Response的参数，从而实现向客户端主动推送消息。
 # 项目中所用到的第三方库
 * opencv-python
-* 维护者：Olli-Pekka Heinisuo、skvark
-* 协议：MIT License (MIT)
-* 开源
-* 使用到的功能：图片处理<br>
+维护者：Olli-Pekka Heinisuo、skvark<br>
+协议：MIT License (MIT)<br>
+开源<br>
+使用到的功能：图片处理<br><br>
 * imutils
-* 作者：Adrian RoseBrock
-* 协议：MIT License (MIT)
-* 开源
-* 使用到的功能：简单的图片处理<br>
+作者：Adrian RoseBrock<br>
+协议：MIT License (MIT)<br>
+开源<br>
+使用到的功能：简单的图片处理<br><br>
 * numpy
-* 作者：Travis E. Oliphant et al.
-* 协议：OSI Approved (BSD)
-* 开源
-* 使用到的功能：各种数学运算<br>
+作者：Travis E. Oliphant et al.<br>
+协议：OSI Approved (BSD)<br>
+开源<br>
+使用到的功能：各种数学运算<br><br>
 * opencv-contrib-python
-* 维护者：Olli-Pekka Heinisuo、skvark
-* 协议：MIT License (MIT)
-* 开源
-* 使用到的功能：opencv中的物体追踪器<br>
+维护者：Olli-Pekka Heinisuo、skvark<br>
+协议：MIT License (MIT)<br>
+开源<br>
+使用到的功能：opencv中的物体追踪器<br><br>
 * six
-* 作者：Benjamin Peterson
-* 协议：MIT License (MIT)
-* 开源（托管在Bitbucket上）
-* 使用到的功能：兼容python2和python3的库<br>
+作者：Benjamin Peterson<br>
+协议：MIT License (MIT)<br>
+开源（托管在Bitbucket上）<br>
+使用到的功能：兼容python2和python3的库<br><br>
 * tensorflow
-* 作者：Google
-* 协议：Apache Software License (Apache 2.0)
-* 开源
-* 使用到的功能：对于深度学习模型的使用<br>
+作者：Google<br>
+协议：Apache Software License (Apache 2.0)<br>
+开源<br>
+使用到的功能：对于深度学习模型的使用<br><br>
 * matplotlib
-* 作者：John D. Hunter, Michael Droettboom
-* 协议：Python Software Foundation License (BSD)
-* 开源
-* 使用到的功能：图片处理与绘制操作<br>
+作者：John D. Hunter, Michael Droettboom<br>
+协议：Python Software Foundation License (BSD)<br>
+开源<br>
+使用到的功能：图片处理与绘制操作<br><br>
 * flask,werkzeug
-* 作者：Armin Ronacher, Pallets team
-* 协议：BSD
-* 开源
-* 使用到的功能：网站服务的搭建<br>
+作者：Armin Ronacher, Pallets team<br>
+协议：BSD<br>
+开源<br>
+使用到的功能：网站服务的搭建<br><br>
 * face_recognition
-* 作者：Adam Geitgey
-* 协议：MIT License (MIT)
-* 开源
-* 使用到的功能：人脸识别<br>
+作者：Adam Geitgey<br>
+协议：MIT License (MIT)<br>
+开源<br>
+使用到的功能：人脸识别<br><br>
 * click
-* 作者：Armin Ronacher
-* 协议：BSD
-* 开源
-* 使用到的功能：命令行包装器<br>
+作者：Armin Ronacher<br>
+协议：BSD<br>
+开源<br>
+使用到的功能：命令行包装器<br><br>
 * pickle
-* 作者：Antoine Pitrou
-* 协议：Python Software Foundation License
-* 开源
-* 使用到的功能：数据对象的持久化<br>
+作者：Antoine Pitrou<br>
+协议：Python Software Foundation License<br>
+开源<br>
+使用到的功能：数据对象的持久化<br><br>
 * blinker
-* 作者：Jason Kirtland
-* 协议：MIT License (MIT)
-* 开源
-* 使用到的功能：实现信号机制（警示记录发生更新时发出信号）<br>
+作者：Jason Kirtland<br>
+协议：MIT License (MIT)<br>
+开源<br>
+使用到的功能：实现信号机制（警示记录发生更新时发出信号）<br><br>
