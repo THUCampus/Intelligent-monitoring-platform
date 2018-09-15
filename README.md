@@ -143,62 +143,62 @@ flask run
 3. 记录生成器的迭代方法__iter__内每获取一个锁资源，就会生成一个消息。
 4. 将记录生成器作为Response的参数，从而实现向客户端主动推送消息。
 # 项目中所用到的第三方库
-* opencv-python
+* opencv-python<br>
 维护者：Olli-Pekka Heinisuo、skvark<br>
 协议：MIT License (MIT)<br>
 开源<br>
 使用到的功能：图片处理<br><br>
-* imutils
+* imutils<br>
 作者：Adrian RoseBrock<br>
 协议：MIT License (MIT)<br>
 开源<br>
 使用到的功能：简单的图片处理<br><br>
-* numpy
+* numpy<br>
 作者：Travis E. Oliphant et al.<br>
 协议：OSI Approved (BSD)<br>
 开源<br>
 使用到的功能：各种数学运算<br><br>
-* opencv-contrib-python
+* opencv-contrib-python<br>
 维护者：Olli-Pekka Heinisuo、skvark<br>
 协议：MIT License (MIT)<br>
 开源<br>
 使用到的功能：opencv中的物体追踪器<br><br>
-* six
+* six<br>
 作者：Benjamin Peterson<br>
 协议：MIT License (MIT)<br>
 开源（托管在Bitbucket上）<br>
 使用到的功能：兼容python2和python3的库<br><br>
-* tensorflow
+* tensorflow<br>
 作者：Google<br>
 协议：Apache Software License (Apache 2.0)<br>
 开源<br>
 使用到的功能：对于深度学习模型的使用<br><br>
-* matplotlib
+* matplotlib<br>
 作者：John D. Hunter, Michael Droettboom<br>
 协议：Python Software Foundation License (BSD)<br>
 开源<br>
 使用到的功能：图片处理与绘制操作<br><br>
-* flask,werkzeug
+* flask,werkzeug<br>
 作者：Armin Ronacher, Pallets team<br>
 协议：BSD<br>
 开源<br>
 使用到的功能：网站服务的搭建<br><br>
-* face_recognition
+* face_recognition<br>
 作者：Adam Geitgey<br>
 协议：MIT License (MIT)<br>
 开源<br>
 使用到的功能：人脸识别<br><br>
-* click
+* click<br>
 作者：Armin Ronacher<br>
 协议：BSD<br>
 开源<br>
 使用到的功能：命令行包装器<br><br>
-* pickle
+* pickle<br>
 作者：Antoine Pitrou<br>
 协议：Python Software Foundation License<br>
 开源<br>
 使用到的功能：数据对象的持久化<br><br>
-* blinker
+* blinker<br>
 作者：Jason Kirtland<br>
 协议：MIT License (MIT)<br>
 开源<br>
